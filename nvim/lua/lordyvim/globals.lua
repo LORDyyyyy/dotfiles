@@ -1,6 +1,7 @@
 --[[ Global Setting and Global Variables ]]--
 
 
+vim.cmd(':setlocal spell spelllang=en_us')
 
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true

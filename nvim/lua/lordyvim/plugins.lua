@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
 	
 
 
-	-- For Commenting gcc & gc
+	-- For Commenting gcc/gbc & gc/gb
 	use 'https://github.com/tpope/vim-commentary'
 
 
@@ -98,7 +98,8 @@ return require('packer').startup(function(use)
 
 
 	-- base16 Themes
-	use 'RRethy/nvim-base16'
+	-- use 'RRethy/nvim-base16'
+	use 'tinted-theming/base16-vim'
 
 
 	-- Auto JSON Formatter
@@ -196,5 +197,6 @@ return require('packer').startup(function(use)
 	-- markdown Preview
 	-- use {'iamcco/markdown-preview.nvim'}
 
-
+	-- detect the same words
+	use 'RRethy/vim-illuminate'
 end)

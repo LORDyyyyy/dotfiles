@@ -1,4 +1,4 @@
-local highlight = {
+local highlight_grp1 = {
 		"RainbowRed",
 	    "RainbowYellow",
 		"RainbowBlue",
@@ -18,13 +18,23 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 	vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
     vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
 	vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+	-- vim.api.nvim_set_hl(0, "CursorColumn", { fg = "#99ccff" })
+	vim.api.nvim_set_hl(0, "Whitespace", { fg = "#4D273D" })
 end)
 
+local highlight_grp2 = {
+    "CursorColumn",
+    "Whitespace",
+}
+
 require("ibl").setup {
-	indent = { highlight = highlight, char = '⋮'},
+	indent = {
+		-- highlight = highlight_grp2,
+		char = '┊'
+	},
 	exclude = { filetypes = {"dashboard", "packer"} },
 	whitespace = {
-		highlight = highlight,
+		-- highlight = highlight_grp2,
 	},
 	scope = { enabled = false },
 }

@@ -1,25 +1,11 @@
+--[[ Have Fun! ]]--
+
 vim.g.mapleader = " "
 
 
 
-
-
--- vim.cmd [[
--- fun! SmartResize()
--- 	if winnr() == winnr('$')
--- 		nnoremap <silent> <C-Right> :horizontal resize -2<CR>
--- 		nnoremap <silent> <C-Left> :horizontal resize +2<CR>
--- 	else
--- 		nnoremap <silent> <C-Right> :horizontal resize +2<CR>
--- 		nnoremap <silent> <C-Left> :horizontal resize -2<CR>
--- 	endif
--- endfun
--- ]]
-
-
-
 -------------------------------
--- [[ Some Keymapping ]]-
+-- [[ Some Key Mapping ]]-
 
 -- Map W to w, Wq to wq, Q to q, WQ to wq 
 vim.cmd('command! -nargs=0 -bar W w')
@@ -33,7 +19,7 @@ vim.keymap.set('n', '<Tab>', 'i')
 
 
 -------------------------------
---[[ Selection Keymapping ]]--
+--[[ Selection Key Mapping ]]--
 -- C = Cursor
 ---- Selection keymaps
 vim.keymap.set('n', '<S-End>', 'v$') -- From C to End of Line
@@ -56,13 +42,15 @@ vim.keymap.set('v', '<C-x>', 'd')
 
 
 -------------------------------
---[[ Navigation Keymapping ]]--
+--[[ Navigation Key mapping ]]--
 
 -- Switch between Splitted screen
-vim.keymap.set('n', '<A-l>', '<C-w>l')
-vim.keymap.set('n', '<A-k>', '<C-w>h')
+vim.keymap.set('n', '<A-l>', '<C-W>l') -- Right
+vim.keymap.set('n', '<A-k>', '<C-W>h') -- Left
+vim.keymap.set('n', '<A-u>', '<C-W>k') -- Up
+vim.keymap.set('n', '<A-j>', '<C-W>j') -- Down
 
--- Rsize Splitted tab
+-- Resize Splitted tab
 vim.keymap.set('n', '<A-;>', ':vertical resize +1<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<A-\'>', ':vertical resize -1<CR>', { noremap = true, silent = true })
 
@@ -92,9 +80,11 @@ vim.g.vcool_ins_rgba_map = '<A-v>'
 -------
 
 -- Telescope keymaps
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { silent = true })
 vim.keymap.set('n', '<leader>d', ':Telescope oldfiles<CR>', { silent = true })
 vim.keymap.set('n', '<leader>q', ':Telescope live_grep<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true })
+vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true })
 
 -------
 
@@ -106,7 +96,7 @@ vim.keymap.set('n', '<leader>uy', ':w<CR>:lua require("nvterm.terminal").toggle 
 -------
 
 -- Keymaps cheat sheet
-vim.keymap.set('n', '<leader>ww', ':WhichKey<CR>', { silent = true })
+vim.keymap.set('n', '<leader>w', ':WhichKey<CR>', { silent = true })
 
 -------
 
@@ -126,7 +116,8 @@ vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>', { silent = true })
 -------
 
 -- Dashboard
-vim.keymap.set('n', '<leader>h', ':Dashboard<CR>', { silent = true })
+vim.keymap.set('n', '<leader>h', ':Dashboard<cr>', { silent = true, noremap = true, desc = "Dashboard" })
+vim.keymap.set('n', '<leader>hn', ':DashboardNewFile<cr>', { silent = true, noremap = true, desc = "New file" })
 
 -------
 
@@ -145,7 +136,6 @@ vim.keymap.set('n', '<leader>mds', ':MarkdownPreviewStop<CR>')
 -- LiveServer
 vim.keymap.set('n', '<leader>ls', ':LiveServerStart<CR>')
 vim.keymap.set('n', '<leader>lss', ':LiveServerStop<CR>')
-
 
 
 

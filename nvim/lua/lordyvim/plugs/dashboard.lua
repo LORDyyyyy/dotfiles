@@ -52,10 +52,10 @@ dashboard.custom_center = {
 
 }
 
--- 	{ desc = ' Themes', group = 'Themes', action = 'Telescope colorscheme', key = 'a',},
+
 
 local function get_footer()
-  local default_footer = { '', 'Good evening Sir, Welcome to  !' }
+  local default_footer = { '', 'Good evening LORDy, Welcome to  !' }
   if packer_plugins ~= nil then
     local count = #vim.tbl_keys(packer_plugins)
     default_footer[2] = 'Loaded ' .. count .. ' plugins'
@@ -88,16 +88,13 @@ dashboard.header_pad = get_header_pad()
 local ok, dracula = pcall(require, "dracula")
 if ok then
   local colors = dracula.colors()
-  vim.api.nvim_set_hl(0, 'DashboardHeader', { fg =  colors.cyan })
-  vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = colors.red })
+  vim.api.nvim_set_hl(0, 'DashboardHeader', { fg =  "#BD93f9" })
+  vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = "#ffffff" })
   vim.api.nvim_set_hl(0, 'DashboardShortCut', { fg = colors.cyan })
-  vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = "#33ff00" })
+  vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = "#BD93f9" })
   for i in ipairs(dashboard.custom_center) do
     dashboard.custom_center[i].icon_hl = { fg = colors.cyan}
   end
 end
 
-
-vim.keymap.set('n', '<leader>bn', '<cmd>DashboardNewFile<cr>', { silent = true, noremap = true, desc = "New file" })
-vim.keymap.set('n', '<leader>mb', '<cmd>Dashboard<cr>', { silent = true, noremap = true, desc = "Dashboard" })
 
