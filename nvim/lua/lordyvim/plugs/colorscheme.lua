@@ -10,8 +10,8 @@ dracula.setup {
 vim.g.base16_background_transparent = 1
 vim.g.base16_colorspace = 256
 
--- vim.cmd [[colorscheme base16-tokyo-city-dark]]
-vim.cmd [[colorscheme dracula]]
+vim.cmd [[colorscheme base16-tokyo-city-dark]]
+-- vim.cmd [[colorscheme dracula]]
 
 
 -- Cursor

@@ -3,7 +3,6 @@
 vim.g.mapleader = " "
 
 
-
 -------------------------------
 -- [[ Some Key Mapping ]]-
 
@@ -136,6 +135,19 @@ vim.keymap.set('n', '<leader>mds', ':MarkdownPreviewStop<CR>')
 -- LiveServer
 vim.keymap.set('n', '<leader>ls', ':LiveServerStart<CR>')
 vim.keymap.set('n', '<leader>lss', ':LiveServerStop<CR>')
+
+-------
+
+-- Doge Auto Doc
+
+vim.g.doge_mapping = {
+	generate_doc_comment = '',
+	jump_forward = '',
+	jump_backward = '',
+}
+vim.keymap.set('n', '<leader>p', '<Plug>(doge-generate)', { silent = true })
+vim.keymap.set('n', '<leader>]', '<Plug>(doge-comment-jump-forward)', { silent = true })
+vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent = true })
 
 
 

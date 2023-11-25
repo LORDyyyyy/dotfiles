@@ -42,3 +42,8 @@ airline_right_alt_sep = ''
 airline_symbols.branch = ''
 airline_symbols.readonly = ''
 airline_symbols.linenr = ''
+
+
+
+
+

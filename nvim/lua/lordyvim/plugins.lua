@@ -57,9 +57,10 @@ return require('packer').startup(function(use)
 
 
 	-- Treesitter
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-	use('nvim-treesitter/playground')
-	use('norcalli/nvim-colorizer.lua')
+	use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+	-- use { 'nvim-treesitter/nvim-tree-docs', commit = '0b0ecfcb92ed52cdaae6678dc547391df699877b' }
+	use 'nvim-treesitter/playground'
+	use 'norcalli/nvim-colorizer.lua'
 
 
 	-- neotree
@@ -169,13 +170,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	-- use({
-		-- "L3MON4D3/LuaSnip",
-		-- follow latest release.
-		-- tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!:).
-		-- run = "make install_jsregexp"
-	-- })
 
 
 	local lsp = require('lsp-zero').preset({
@@ -197,6 +191,14 @@ return require('packer').startup(function(use)
 	-- markdown Preview
 	-- use {'iamcco/markdown-preview.nvim'}
 
+
 	-- detect the same words
 	use 'RRethy/vim-illuminate'
+
+
+	use {
+		'kkoomen/vim-doge',
+		run = ':call doge#install()'
+	}
+
 end)
