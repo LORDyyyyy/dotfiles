@@ -189,13 +189,26 @@ return require('packer').startup(function(use)
 	use 'mg979/vim-visual-multi'
 
 	-- markdown Preview
-	-- use {'iamcco/markdown-preview.nvim'}
+	-- install without yarn or npm
+	use({
+	    "iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	})
+
+	use({ 
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } 
+		end, 
+		ft = { "markdown" },
+	})
 
 
 	-- detect the same words
 	use 'RRethy/vim-illuminate'
 
-
+	
+	-- Doge auto Documentation
 	use {
 		'kkoomen/vim-doge',
 		run = ':call doge#install()'

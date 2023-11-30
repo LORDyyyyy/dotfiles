@@ -120,10 +120,12 @@ vim.keymap.set('n', '<leader>hn', ':DashboardNewFile<cr>', { silent = true, nore
 
 -------
 
--- LSP go to Declaration and Definition
+-- LSP
+-- go to Declaration and Definition
 vim.keymap.set('n', '<leader>gf', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
 vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
-
+--Auto Formatter
+vim.keymap.set('n', '<leader>ll', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
 -------
 
 -- Markdown Preview
