@@ -14,7 +14,8 @@ vim.cmd('command! -nargs=0 -bar WQ wq')
 
 vim.keymap.set('n', '<Tab>', 'i')
 
-
+vim.keymap.set('n', '<C-s>', ':w <CR>')
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
 
 
 -------------------------------
@@ -55,7 +56,9 @@ vim.keymap.set('n', '<A-\'>', ':vertical resize -1<CR>', { noremap = true, silen
 
 -- Tabs Plugin keymaps
 vim.keymap.set('n', '<A-,>', ':BufferPrevious<CR>', { silent = true })
+vim.keymap.set('n', '<A-Left>', ':BufferPrevious<CR>', { silent = true })
 vim.keymap.set('n', '<A-.>', ':BufferNext<CR>', { silent = true })
+vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true })
 vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true })
 vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true }) -- Discard Current Buffer Saving
 
