@@ -95,10 +95,11 @@ return require('packer').startup(function(use)
 
 	-- base16 Themes
 	use 'tinted-theming/base16-vim'
-	-- tokyonight theme
 	use "folke/tokyonight.nvim"
-	-- Dracula themes
 	use 'Mofiqul/dracula.nvim'
+	use 'navarasu/onedark.nvim'
+	use 'projekt0n/github-nvim-theme'
+	use "NLKNguyen/papercolor-theme"
 
 
 	-- Auto JSON Formatter

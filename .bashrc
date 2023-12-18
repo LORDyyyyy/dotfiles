@@ -7,6 +7,8 @@ export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 alias ls="ls --color=auto"
 alias :q="exit"
+alias where="which"
+alias CLEAR="clear"
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -20,7 +22,7 @@ alias vim='nvim'
 
 
 # Change directory aliases
-alias gd="cd ~/Desktop/G-Drive"
+alias gd="cd ~/G-Drive"
 alias gh="cd ~/Github"
 alias dtop="cd ~/Desktop"
 alias home='cd ~'

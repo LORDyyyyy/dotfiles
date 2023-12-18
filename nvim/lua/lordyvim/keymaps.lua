@@ -12,7 +12,7 @@ vim.cmd('command! -nargs=0 -bar Q q')
 vim.cmd('command! -nargs=0 -bar Wq wq')
 vim.cmd('command! -nargs=0 -bar WQ wq')
 
-vim.keymap.set('n', '<Tab>', 'i')
+vim.keymap.set('n', '<Tab>', 'a')
 
 vim.keymap.set('n', '<C-s>', ':w <CR>')
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
