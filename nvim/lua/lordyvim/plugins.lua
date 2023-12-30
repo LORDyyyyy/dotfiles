@@ -32,7 +32,6 @@ return require('packer').startup(function(use)
 	use('lukas-reineke/indent-blankline.nvim')
 
 
-
 	-- For Commenting gcc/gbc & gc/gb
 	use 'https://github.com/tpope/vim-commentary'
 
@@ -74,6 +73,7 @@ return require('packer').startup(function(use)
 		source_selector = { statusline = true }
 	}
 
+
 	-- which key
 	use {
 		"folke/which-key.nvim",
@@ -84,6 +84,7 @@ return require('packer').startup(function(use)
 		end
 	}
 
+
 	-- NvChad Terminal
 	use {
 		"NvChad/nvterm",
@@ -93,12 +94,11 @@ return require('packer').startup(function(use)
 	}
 
 
-	-- base16 Themes
+	-- Themes
 	use 'tinted-theming/base16-vim'
 	use "folke/tokyonight.nvim"
 	use 'Mofiqul/dracula.nvim'
 	use 'navarasu/onedark.nvim'
-	use 'projekt0n/github-nvim-theme'
 	use "NLKNguyen/papercolor-theme"
 
 
@@ -135,6 +135,7 @@ return require('packer').startup(function(use)
 		requires = { { 'nvim-tree/nvim-web-devicons' } }
 	}
 
+
 	-- LSP
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -157,12 +158,9 @@ return require('packer').startup(function(use)
 			-- Snippets
 			{ 'L3MON4D3/LuaSnip' },    -- Required
 			{ 'rafamadriz/friendly-snippets' }, -- Optional
-			{ 'j-hui/fidget.nvim' },   -- Optional
+			-- { 'j-hui/fidget.nvim' },   -- Optional
 		}
 	}
-
-
-
 	local lsp = require('lsp-zero').preset({
 		name = 'minimal',
 		set_lsp_keymaps = true,
@@ -202,4 +200,5 @@ return require('packer').startup(function(use)
 		'kkoomen/vim-doge',
 		run = ':call doge#install()'
 	}
+
 end)

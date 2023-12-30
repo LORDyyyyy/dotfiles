@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=New Color Scheme
-Font=Hack,12,-1,5,75,0,0,0,0,0,Bold
+Font=DejaVu Sans Mono,11.7,-1,5,75,0,0,0,0,0,Bold
 IgnoreWcWidth=false
 LineSpacing=0
 TabColor=25,134,190
@@ -33,6 +33,7 @@ KeyBindings=default
 
 [Scrolling]
 HistorySize=1000
+ScrollBarPosition=1
 
 [Terminal Features]
 BlinkingCursorEnabled=false
