@@ -9,5 +9,10 @@ If you have suggestions, improvements, or new configuration files to add, please
 Special thanks to the following people/repository for sharing their configuration files:
 
 - [ChrisTitusTech](https://github.com/ChrisTitusTech)
+    - [titus-conky](https://github.com/ChrisTitusTech/titus-conky)
+    - [nord-background](https://github.com/ChrisTitusTech/nord-background)
+    - [mybash](https://github.com/ChrisTitusTech/mybash)
 - [JAMmIKA1](https://github.com/JAMmIKA1)
+    - [dotfiles](https://github.com/JAMmIKA1/dotfiles)
+    - [prayer-times-calculator](https://github.com/JAMmIKA1/prayer-times-calculator)
 - [monadplus/nvim](https://github.com/monadplus/nvim)
