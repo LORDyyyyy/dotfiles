@@ -39,6 +39,8 @@ vim.keymap.set('v', '<C-c>', 'y')
 vim.keymap.set('n', '<C-x>', 'd')
 vim.keymap.set('v', '<C-x>', 'd')
 
+-- Copy line
+vim.keymap.set('n', '<C-l>', 'yy')
 
 
 -------------------------------
@@ -84,7 +86,8 @@ vim.g.vcool_ins_rgba_map = '<A-v>'
 -- Telescope keymaps
 vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { silent = true })
 vim.keymap.set('n', '<leader>d', ':Telescope oldfiles<CR>', { silent = true })
-vim.keymap.set('n', '<leader>q', ':Telescope live_grep<CR>', { silent = true })
+vim.keymap.set('n', '<leader>aq', ':Telescope live_grep<CR>', { silent = true })
+vim.keymap.set('n', '<leader>q', ':Telescope current_buffer_fuzzy_find<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true })
 vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true })
 
@@ -129,6 +132,9 @@ vim.keymap.set('n', '<leader>gf', ':lua vim.lsp.buf.definition()<CR>', { silent 
 vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
 --Auto Formatter
 vim.keymap.set('n', '<leader>ll', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
+-- Change Var name across file
+vim.keymap.set('n', '<leader>rq', ':lua vim.lsp.buf.rename()<CR>')
+
 -------
 
 -- Markdown Preview
