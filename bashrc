@@ -11,6 +11,7 @@ unset GREP_OPTIONS
 
 
 alias ls="ls --color=auto"
+alias l="ls --color=auto"
 alias :q="exit"
 alias where="which"
 alias CLEAR="clear"
@@ -31,6 +32,7 @@ alias vim='nvim'
 alias gd="cd ~/G-Drive"
 alias gh="cd ~/Github"
 alias dtop="cd ~/Desktop"
+alias testf="cd ~/Test"
 alias home='cd ~'
 alias cd..='cd ..'
 alias ..='cd ..'
