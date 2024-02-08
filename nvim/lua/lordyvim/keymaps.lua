@@ -17,7 +17,6 @@ vim.keymap.set('n', '<Tab>', 'a')
 vim.keymap.set('n', '<C-s>', ':w <CR>')
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
 
-
 -------------------------------
 --[[ Selection Key Mapping ]]--
 -- C = Cursor
@@ -42,6 +41,9 @@ vim.keymap.set('v', '<C-x>', 'd')
 -- Copy line
 vim.keymap.set('n', '<C-l>', 'yy')
 
+-- Copy Word
+vim.keymap.set('n', '<C-w>', 'yiw')
+
 
 -------------------------------
 --[[ Navigation Key mapping ]]--
@@ -63,7 +65,9 @@ vim.keymap.set('n', '<A-.>', ':BufferNext<CR>', { silent = true })
 vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true })
 vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true })
 vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true }) -- Discard Current Buffer Saving
-
+-- Move Tabs
+vim.keymap.set('n', '<C-e>', ':BufferMovePrevious<CR>', { silent = true })
+vim.keymap.set('n', '<C-r>', ':BufferMoveNext<CR>', { silent = true })
 
 
 -------------------------------
@@ -159,7 +163,6 @@ vim.g.doge_mapping = {
 vim.keymap.set('n', '<leader>p', '<Plug>(doge-generate)', { silent = true })
 vim.keymap.set('n', '<leader>]', '<Plug>(doge-comment-jump-forward)', { silent = true })
 vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent = true })
-
 
 
 
