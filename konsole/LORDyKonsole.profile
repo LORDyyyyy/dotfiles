@@ -8,9 +8,10 @@ LineSpacing=0
 TabColor=25,134,190
 UseFontLineChararacters=false
 WordModeAscii=false
+WordModeBrahmic=false
 
 [Cursor Options]
-CursorShape=2
+CursorShape=1
 UseCustomCursorColor=false
 
 [General]
@@ -19,6 +20,8 @@ Icon=/usr/share/pixmaps/archlinux-logo.png
 InvertSelectionColors=true
 Name=LORDyKonsole
 Parent=FALLBACK/
+SemanticInputClick=false
+SemanticUpDown=false
 ShowTerminalSizeHint=true
 StartInCurrentSessionDir=true
 TerminalCenter=true
@@ -32,10 +35,12 @@ CopyTextAsHTML=false
 KeyBindings=default
 
 [Scrolling]
+HistoryMode=1
 HistorySize=1000
-ScrollBarPosition=1
+ScrollBarPosition=2
+ScrollFullPage=0
 
 [Terminal Features]
-BlinkingCursorEnabled=false
+BlinkingCursorEnabled=true
 VerticalLine=false
 VerticalLineAtChar=81
