@@ -138,6 +138,8 @@ vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.declaration()<CR>', { silent
 vim.keymap.set('n', '<leader>ll', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
 -- Change Var name across file
 vim.keymap.set('n', '<leader>rq', ':lua vim.lsp.buf.rename()<CR>')
+-- Code Action
+vim.keymap.set('n', '<leader>ko', ':lua vim.lsp.buf.code_action()<CR>')
 
 -------
 
