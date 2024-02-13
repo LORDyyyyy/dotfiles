@@ -16,6 +16,7 @@ alias :q="exit"
 alias where="which"
 alias CLEAR="clear"
 alias copy='xsel --clipboard'
+alias json_format='python -m json.tool'
 
 # Alias's to modified commands
 alias cp='cp -i'
