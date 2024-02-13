@@ -66,8 +66,8 @@ vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true })
 vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true })
 vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true }) -- Discard Current Buffer Saving
 -- Move Tabs
-vim.keymap.set('n', '<C-M-y>', ':BufferMovePrevious<CR>', { silent = true })
-vim.keymap.set('n', '<C-M-u>', ':BufferMoveNext<CR>', { silent = true })
+vim.keymap.set('n', '<C-M-o>', ':BufferMovePrevious<CR>', { silent = true })
+vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true })
 
 
 -------------------------------
