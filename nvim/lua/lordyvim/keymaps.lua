@@ -1,12 +1,14 @@
---[[ Have Fun! ]]--
+--[[ Have Fun! ]] --
 
+
+local utils = require('lordyvim.plugs.utils')
 vim.g.mapleader = " "
 
 
 -------------------------------
 -- [[ Some Key Mapping ]]-
 
--- Map W to w, Wq to wq, Q to q, WQ to wq 
+-- Map W to w, Wq to wq, Q to q, WQ to wq
 vim.cmd('command! -nargs=0 -bar W w')
 vim.cmd('command! -nargs=0 -bar Q q')
 vim.cmd('command! -nargs=0 -bar Wq wq')
@@ -17,14 +19,18 @@ vim.keymap.set('n', '<Tab>', 'a')
 vim.keymap.set('n', '<C-s>', ':w <CR>')
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
 
+-- Copy Current file's folder directory to the system clipboard
+vim.keymap.set('n', '<leader>pwd', ':lua require("lordyvim.plugs.utils").CopyFileDirectory()<CR>', { silent = true })
+
+
 -------------------------------
 --[[ Selection Key Mapping ]]--
 -- C = Cursor
 ---- Selection keymaps
-vim.keymap.set('n', '<S-End>', 'v$') -- From C to End of Line
-vim.keymap.set('n', '<S-Home>', 'v0') -- From C Start of Line
+vim.keymap.set('n', '<S-End>', 'v$')                  -- From C to End of Line
+vim.keymap.set('n', '<S-Home>', 'v0')                 -- From C Start of Line
 vim.keymap.set('n', '<S-C-Home>', ':normal vgg0<CR>') -- From C to Start of Files
-vim.keymap.set('n', '<S-C-End>', ':normal vG$<CR>') -- From C to EOF
+vim.keymap.set('n', '<S-C-End>', ':normal vG$<CR>')   -- From C to EOF
 
 -- Select all
 vim.keymap.set('n', '<C-a>', 'ggVG')
@@ -43,6 +49,9 @@ vim.keymap.set('n', '<C-l>', 'yy')
 
 -- Copy Word
 vim.keymap.set('n', '<C-w>', 'yiw')
+
+-- Start paste mode
+vim.opt.pastetoggle = '<F3>'
 
 
 -------------------------------
@@ -68,6 +77,7 @@ vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true }) -- Discard 
 -- Move Tabs
 vim.keymap.set('n', '<C-M-o>', ':BufferMovePrevious<CR>', { silent = true })
 vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true })
+
 
 
 -------------------------------
@@ -98,8 +108,8 @@ vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true })
 -------
 
 -- Open Terminal
-vim.keymap.set('n', '<leader>tt', ':lua require("nvterm.terminal").toggle "float"<CR>') -- open
-vim.keymap.set('n', '<leader>ty', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>') -- save then open float
+vim.keymap.set('n', '<leader>tt', ':lua require("nvterm.terminal").toggle "float"<CR>')            -- open
+vim.keymap.set('n', '<leader>ty', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>')      -- save then open float
 vim.keymap.set('n', '<leader>uy', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>') -- save then open horizontal
 
 -------
@@ -158,14 +168,22 @@ vim.keymap.set('n', '<leader>lss', ':LiveServerStop<CR>')
 -- Doge Auto Doc
 
 vim.g.doge_mapping = {
-	generate_doc_comment = '',
-	jump_forward = '',
-	jump_backward = '',
+    generate_doc_comment = '',
+    jump_forward = '',
+    jump_backward = '',
 }
 vim.keymap.set('n', '<leader>p', '<Plug>(doge-generate)', { silent = true })
 vim.keymap.set('n', '<leader>]', '<Plug>(doge-comment-jump-forward)', { silent = true })
 vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent = true })
 
+-------
 
+-- cphelper.nvim
 
---[[ END ]]--
+vim.keymap.set('n', '<leader>cpr', ':CphReceive<CR>');
+vim.keymap.set('n', '<leader>cpt', ':CphTest<CR>');
+vim.keymap.set('n', '<leader>cpe', ':CphEdit');
+
+-------
+
+-- [[ END ]] --

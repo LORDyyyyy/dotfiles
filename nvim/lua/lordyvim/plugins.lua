@@ -201,4 +201,7 @@ return require('packer').startup(function(use)
 		run = ':call doge#install()'
 	}
 
+    -- Competitive programming helper for neovim
+    use 'p00f/cphelper.nvim'
+
 end)
