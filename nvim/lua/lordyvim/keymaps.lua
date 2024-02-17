@@ -53,6 +53,15 @@ vim.keymap.set('n', '<C-w>', 'yiw')
 -- Start paste mode
 vim.opt.pastetoggle = '<F3>'
 
+-- Move Selected Lines
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Change word all over the buffer
+vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Make file executable
+vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -------------------------------
 --[[ Navigation Key mapping ]]--
@@ -79,7 +88,6 @@ vim.keymap.set('n', '<C-M-o>', ':BufferMovePrevious<CR>', { silent = true })
 vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true })
 
 
-
 -------------------------------
 --[[ Plugins Keymapping ]]--
 
@@ -104,6 +112,7 @@ vim.keymap.set('n', '<leader>aq', ':Telescope live_grep<CR>', { silent = true })
 vim.keymap.set('n', '<leader>q', ':Telescope current_buffer_fuzzy_find<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true })
 vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true })
+vim.keymap.set('n', '<leader>vs', ':Telescope treesitter<CR>', { silent = true })
 
 -------
 
@@ -183,6 +192,12 @@ vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent 
 vim.keymap.set('n', '<leader>cpr', ':CphReceive<CR>');
 vim.keymap.set('n', '<leader>cpt', ':CphTest<CR>');
 vim.keymap.set('n', '<leader>cpe', ':CphEdit');
+
+-------
+
+-- undotree
+
+vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
 -------
 

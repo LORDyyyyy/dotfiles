@@ -165,7 +165,7 @@ return require('packer').startup(function(use)
 		name = 'minimal',
 		set_lsp_keymaps = true,
 		manage_nvim_cmp = true,
-		suggest_lsp_servers = false,
+		suggest_lsp_servers = true,
 	})
 
 	lsp.setup()
@@ -203,5 +203,8 @@ return require('packer').startup(function(use)
 
     -- Competitive programming helper for neovim
     use 'p00f/cphelper.nvim'
+
+    -- undotree
+    use 'mbbill/undotree'
 
 end)

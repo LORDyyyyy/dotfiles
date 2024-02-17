@@ -1,4 +1,5 @@
---[[ Global Setting and Global Variables ]]--
+--[[ Global Setting and Global Variables ]]
+                                            --
 
 
 vim.cmd(':setlocal spell spelllang=en_us')
@@ -7,6 +8,7 @@ vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
 vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
@@ -18,6 +20,11 @@ vim.opt.expandtab = true
 vim.opt.mouse = 'a'
 
 vim.opt.modifiable = true
+
+vim.opt.swapfile = false
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
 vim.opt.clipboard = 'unnamedplus'
 
@@ -43,8 +50,3 @@ airline_right_alt_sep = ''
 airline_symbols.branch = ''
 airline_symbols.readonly = ''
 airline_symbols.linenr = ''
-
-
-
-
-
