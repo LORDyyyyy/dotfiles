@@ -13,4 +13,3 @@ SpaceBeforeAssignmentOperators: true
 SpaceAfterTemplateKeyword: true
 SpaceAfterCStyleCast: true
 IndentGotoLabels: true
-RemoveBracesLLVM: true
