@@ -45,9 +45,9 @@ dashboard.custom_center = {
 	},
 	{
 		icon = '  ',
-		desc = 'Find  File                              ',
+		desc = 'Find File                               ',
 		action = 'Telescope find_files',
-		shortcut = 'SPC f f'
+		shortcut = 'SPC f  '
 	},
 	{
 		icon = '  ',
@@ -74,11 +74,23 @@ dashboard.custom_center = {
 		shortcut = '       '
 	},
 	{
+		icon = '  ',
+		desc = 'Load Sessions                           ',
+		action = 'SessionManager load_session',
+		shortcut = '       '
+	},
+    {
+		icon = '󱕗  ',
+		desc = 'Delete Sessions                         ',
+		action = 'SessionManager delete_session',
+		shortcut = '       '
+	},
+    {
 		icon = '󰿅  ',
 		desc = 'Exit                                    ',
 		action = 'q',
 		shortcut = '       '
-	},
+	}
 
 }
 

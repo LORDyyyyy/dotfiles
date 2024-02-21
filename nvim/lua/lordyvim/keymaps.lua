@@ -1,4 +1,5 @@
---[[ Have Fun! ]] --
+--[[ Have Fun! ]]
+--
 
 
 local utils = require('lordyvim.plugs.utils')
@@ -20,11 +21,19 @@ vim.keymap.set('n', '<C-s>', ':w <CR>')
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
 
 -- Copy Current file's folder directory to the system clipboard
-vim.keymap.set('n', '<leader>pwd', ':lua require("lordyvim.plugs.utils").CopyFileDirectory()<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cpwd', ':lua require("lordyvim.plugs.utils").CopyFileDirectory()<CR>', { silent = true })
+-- Change current directory to the currnt Buffer's directory
+vim.keymap.set('n', '<leader>topwd', ':set autochdir<CR>')
+-- Change to a specific directory
+vim.keymap.set('n', '<leader>todir', ':cd    ')
 
+
+-- sudo :w
+vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %')
 
 -------------------------------
---[[ Selection Key Mapping ]]--
+--[[ Selection Key Mapping ]]
+--
 -- C = Cursor
 ---- Selection keymaps
 vim.keymap.set('n', '<S-End>', 'v$')                  -- From C to End of Line
@@ -64,7 +73,8 @@ vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -------------------------------
---[[ Navigation Key mapping ]]--
+--[[ Navigation Key mapping ]]
+--
 
 -- Switch between Splitted screen
 vim.keymap.set('n', '<A-l>', '<C-W>l') -- Right
@@ -89,7 +99,8 @@ vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true })
 
 
 -------------------------------
---[[ Plugins Keymapping ]]--
+--[[ Plugins Keymapping ]]
+--
 
 -- Neotree keymap
 vim.keymap.set('n', '<C-f>', ':Neotree left focus<CR>')
@@ -144,7 +155,7 @@ vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>', { silent = true })
 -------
 
 -- Dashboard
-vim.keymap.set('n', '<leader>h', ':Dashboard<cr>', { silent = true, noremap = true, desc = "Dashboard" })
+vim.keymap.set('n', '<leader>hh', ':Dashboard<cr>', { silent = true, noremap = true, desc = "Dashboard" })
 vim.keymap.set('n', '<leader>hn', ':DashboardNewFile<cr>', { silent = true, noremap = true, desc = "New file" })
 
 -------
@@ -191,7 +202,7 @@ vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent 
 
 vim.keymap.set('n', '<leader>cpr', ':CphReceive<CR>');
 vim.keymap.set('n', '<leader>cpt', ':CphTest<CR>');
-vim.keymap.set('n', '<leader>cpe', ':CphEdit');
+vim.keymap.set('n', '<leader>cpe', ':CphEdit   ');
 
 -------
 
@@ -200,5 +211,15 @@ vim.keymap.set('n', '<leader>cpe', ':CphEdit');
 vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
 -------
+
+-- session manager
+
+vim.keymap.set('n', '<leader>ts', ':SessionManager save_current_session<CR>')
+vim.keymap.set('n', '<leader>tl', ':SessionManager load_session<CR>')
+vim.keymap.set('n', '<leader>tnl', ':SessionManager load_last_session<CR>')
+vim.keymap.set('n', '<leader>tpl', ':SessionManager load_current_dir_session<CR>')
+vim.keymap.set('n', '<leader>td', ':SessionManager delete_session<CR>')
+vim.keymap.set('n', '<leader>tpd', ':SessionManager delete_current_dir_session<CR>')
+
 
 -- [[ END ]] --
