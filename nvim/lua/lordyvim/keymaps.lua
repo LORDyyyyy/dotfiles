@@ -27,6 +27,8 @@ vim.keymap.set('n', '<leader>topwd', ':set autochdir<CR>')
 -- Change to a specific directory
 vim.keymap.set('n', '<leader>todir', ':cd    ')
 
+-- Make file executable
+vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- sudo :w
 vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %')
@@ -53,14 +55,16 @@ vim.keymap.set('v', '<C-c>', 'y')
 vim.keymap.set('n', '<C-x>', 'd')
 vim.keymap.set('v', '<C-x>', 'd')
 
--- Copy line
+-- Cut line starting from the first non-white character till the end of line
+vim.keymap.set('n', 'dd', '^"_d0dd')
+-- Delete empty line but do not send it to system clipboard
+vim.keymap.set('n', 'ds', '"_dd')
+
+-- Copy line without the indent
 vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true })
 
 -- Copy Word
 vim.keymap.set('n', '<C-w>', 'yiw')
-
--- Start paste mode
-vim.opt.pastetoggle = '<F3>'
 
 -- Move Selected Lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -69,27 +73,24 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Change word all over the buffer
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Make file executable
-vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true })
-
 -------------------------------
 --[[ Navigation Key mapping ]]
 --
 
 -- Switch between Splitted screen
-vim.keymap.set('n', '<A-l>', '<C-W>l') -- Right
-vim.keymap.set('n', '<A-k>', '<C-W>h') -- Left
-vim.keymap.set('n', '<A-u>', '<C-W>k') -- Up
-vim.keymap.set('n', '<A-j>', '<C-W>j') -- Down
+vim.keymap.set('n', '<A-/>', '<C-W>l') -- Right
+vim.keymap.set('n', '<A-,>', '<C-W>h') -- Left
+vim.keymap.set('n', '<A-l>', '<C-W>k') -- Up
+vim.keymap.set('n', '<A-.>', '<C-W>j') -- Down
 
 -- Resize Splitted tab
 vim.keymap.set('n', '<A-;>', ':vertical resize +1<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<A-\'>', ':vertical resize -1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-[>', ':horizontal resize +1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-]>', ':horizontal resize -1<CR>', { noremap = true, silent = true })
 
 -- Tabs Plugin keymaps
-vim.keymap.set('n', '<A-,>', ':BufferPrevious<CR>', { silent = true })
 vim.keymap.set('n', '<A-Left>', ':BufferPrevious<CR>', { silent = true })
-vim.keymap.set('n', '<A-.>', ':BufferNext<CR>', { silent = true })
 vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true })
 vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true })
 vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true }) -- Discard Current Buffer Saving
@@ -128,9 +129,12 @@ vim.keymap.set('n', '<leader>vs', ':Telescope treesitter<CR>', { silent = true }
 -------
 
 -- Open Terminal
-vim.keymap.set('n', '<leader>tt', ':lua require("nvterm.terminal").toggle "float"<CR>')            -- open
-vim.keymap.set('n', '<leader>ty', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>')      -- save then open float
-vim.keymap.set('n', '<leader>uy', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>') -- save then open horizontal
+vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>')             -- open float
+vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>')      -- save then open float
+vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>')        -- open horizontal
+vim.keymap.set('n', '<leader>tyh', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>') -- save then open horizontal
+vim.keymap.set('n', '<leader>tv', ':lua require("nvterm.terminal").toggle "vertical"<CR>')          -- open vertical
+vim.keymap.set('n', '<leader>tyv', ':w<CR>:lua require("nvterm.terminal").toggle "vertical"<CR>')   -- save then open vertical
 
 -------
 

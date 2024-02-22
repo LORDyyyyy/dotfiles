@@ -64,7 +64,7 @@ dashboard.custom_center = {
 	{
 		icon = '  ',
 		desc = 'Update Plugins                          ',
-		action = 'PackerUpdate',
+		action = 'PackerSync',
 		shortcut = '       '
 	},
 	{
