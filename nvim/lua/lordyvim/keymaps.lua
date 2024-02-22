@@ -54,7 +54,7 @@ vim.keymap.set('n', '<C-x>', 'd')
 vim.keymap.set('v', '<C-x>', 'd')
 
 -- Copy line
-vim.keymap.set('n', '<C-l>', 'yy')
+vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true })
 
 -- Copy Word
 vim.keymap.set('n', '<C-w>', 'yiw')
