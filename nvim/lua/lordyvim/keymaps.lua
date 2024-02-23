@@ -15,39 +15,46 @@ vim.cmd('command! -nargs=0 -bar Q q')
 vim.cmd('command! -nargs=0 -bar Wq wq')
 vim.cmd('command! -nargs=0 -bar WQ wq')
 
-vim.keymap.set('n', '<Tab>', 'a')
+vim.keymap.set('n', '<Tab>', 'a', { desc = "Map a to Tab" })
 
-vim.keymap.set('n', '<C-s>', ':w <CR>')
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i')
+vim.keymap.set('n', 's', '', { desc = "Unmap s" })
+vim.keymap.set('n', 's', '', { desc = "Unmap s" })
+
+vim.keymap.set('n', '<C-s>', ':w <CR>', { desc = "Save by Ctrl + s" })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i', { desc = "Save by Ctrl + s in insert mode" })
 
 -- Copy Current file's folder directory to the system clipboard
-vim.keymap.set('n', '<leader>cpwd', ':lua require("lordyvim.plugs.utils").CopyFileDirectory()<CR>', { silent = true })
--- Change current directory to the currnt Buffer's directory
-vim.keymap.set('n', '<leader>topwd', ':set autochdir<CR>')
+vim.keymap.set('n', '<leader>cpwd', ':lua require("lordyvim.plugs.utils").CopyFileDirectory()<CR>', { silent = true, desc = "Copy pwd" })
+-- Change current directory to the current Buffer's directory
+vim.keymap.set('n', '<leader>topwd', ':set autochdir<CR>', { desc = "Change working path to pwd" })
 -- Change to a specific directory
-vim.keymap.set('n', '<leader>todir', ':cd    ')
+vim.keymap.set('n', '<leader>todir', ':cd    ', { desc = "Change working path" })
 
 -- Make file executable
-vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true , desc = "chmod +x current_file" })
 
 -- sudo :w
-vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %')
+vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %', { desc = "Save file as a super user (root)" })
+
+-- show the differences between two split files
+vim.keymap.set('n', '<leader>-d=', ':windo diffthis<CR>', { desc = "Open the Differences menu between 2 split files" })
+vim.keymap.set('n', '<leader>-d0', ':windo diffoff<CR>', { desc = "Close the Differences menu" })
 
 -------------------------------
 --[[ Selection Key Mapping ]]
 --
 -- C = Cursor
 ---- Selection keymaps
-vim.keymap.set('n', '<S-End>', 'v$')                  -- From C to End of Line
-vim.keymap.set('n', '<S-Home>', 'v0')                 -- From C Start of Line
-vim.keymap.set('n', '<S-C-Home>', ':normal vgg0<CR>') -- From C to Start of Files
-vim.keymap.set('n', '<S-C-End>', ':normal vG$<CR>')   -- From C to EOF
+vim.keymap.set('n', '<S-End>', 'v$', { desc = "Select from cursor to end of line" })                  -- From C to End of Line
+vim.keymap.set('n', '<S-Home>', 'v0', { desc = "Select from cursor to start of line" })                 -- From C Start of Line
+vim.keymap.set('n', '<S-C-Home>', ':normal vgg0<CR>', { desc = "Select form cursor to Start of file" }) -- From C to Start of File
+vim.keymap.set('n', '<S-C-End>', ':normal vG$<CR>', { desc = "Select from cursor to EOF" })   -- From C to EOF
 
 -- Select all
-vim.keymap.set('n', '<C-a>', 'ggVG')
+vim.keymap.set('n', '<C-a>', 'ggVG', { desc = "Select All" })
 
 -- Duplicate line
-vim.keymap.set('n', '<S-T>', ':t.<CR>')
+vim.keymap.set('n', '<S-T>', ':t.<CR>', { desc = "Duplicate line" })
 
 -- Custom copy and cut
 vim.keymap.set('n', '<C-c>', 'y')
@@ -56,47 +63,48 @@ vim.keymap.set('n', '<C-x>', 'd')
 vim.keymap.set('v', '<C-x>', 'd')
 
 -- Cut line starting from the first non-white character till the end of line
-vim.keymap.set('n', 'dd', '^"_d0dd')
+vim.keymap.set('n', 'dd', '^"_d0dd', { desc = "Cut line without indent"})
+
 -- Delete empty line but do not send it to system clipboard
-vim.keymap.set('n', 'ds', '"_dd')
+vim.keymap.set('n', 'df', '"_dd', { desc = "Cut line to the black hole"})
 
 -- Copy line without the indent
-vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true, desc = "Copy line without indent" })
 
 -- Copy Word
-vim.keymap.set('n', '<C-w>', 'yiw')
+vim.keymap.set('n', '<C-w>', 'yiw', {desc = "Copy word"})
 
 -- Move Selected Lines
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line/s UP in v mode" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line/s DOWN in v mode" })
 
 -- Change word all over the buffer
-vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Search and Replace word" })
 
 -------------------------------
 --[[ Navigation Key mapping ]]
 --
 
--- Switch between Splitted screen
-vim.keymap.set('n', '<A-/>', '<C-W>l') -- Right
-vim.keymap.set('n', '<A-,>', '<C-W>h') -- Left
-vim.keymap.set('n', '<A-l>', '<C-W>k') -- Up
-vim.keymap.set('n', '<A-.>', '<C-W>j') -- Down
+-- Switch between Split screen
+vim.keymap.set('n', '<A-/>', '<C-W>l', { desc = "GOTO Right Split Screen" }) -- Right
+vim.keymap.set('n', '<A-,>', '<C-W>h', { desc = "GOTO Left Split Screen" }) -- Left
+vim.keymap.set('n', '<A-l>', '<C-W>k', { desc = "GOTO UP Split Screen" }) -- Up
+vim.keymap.set('n', '<A-.>', '<C-W>j', { desc = "GOTO Down Split Screen" }) -- Down
 
--- Resize Splitted tab
-vim.keymap.set('n', '<A-;>', ':vertical resize +1<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-\'>', ':vertical resize -1<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-[>', ':horizontal resize +1<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<A-]>', ':horizontal resize -1<CR>', { noremap = true, silent = true })
+-- Resize Split tab
+vim.keymap.set('n', '<A-;>', ':vertical resize +1<CR>', { noremap = true, silent = true, desc = "- Resize vertical" })
+vim.keymap.set('n', '<A-\'>', ':vertical resize -1<CR>', { noremap = true, silent = true, desc = "- Resize vertical" })
+vim.keymap.set('n', '<A-[>', ':horizontal resize +1<CR>', { noremap = true, silent = true, desc = "+ Resize horizontal" })
+vim.keymap.set('n', '<A-]>', ':horizontal resize -1<CR>', { noremap = true, silent = true, desc = "- Resize horizontal" })
 
 -- Tabs Plugin keymaps
-vim.keymap.set('n', '<A-Left>', ':BufferPrevious<CR>', { silent = true })
-vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true })
-vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true })
-vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true }) -- Discard Current Buffer Saving
+vim.keymap.set('n', '<A-Left>', ':BufferPrevious<CR>', { silent = true, desc = "Tabs -> GOTO Next" })
+vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true, desc = "Tabs -> GOTO Prev" })
+vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true, desc = "Tabs -> Buffer Tab :wq" })
+vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true, desc = "Tabs -> Buffer Tab :q!"}) -- Discard Current Buffer Saving
 -- Move Tabs
-vim.keymap.set('n', '<C-M-o>', ':BufferMovePrevious<CR>', { silent = true })
-vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true })
+vim.keymap.set('n', '<C-M-o>', ':BufferMovePrevious<CR>', { silent = true, desc = "Tabs -> Move tab to the left" })
+vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true, desc = "Tabs -> Move tab to the right" })
 
 
 -------------------------------
@@ -104,9 +112,10 @@ vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true })
 --
 
 -- Neotree keymap
-vim.keymap.set('n', '<C-f>', ':Neotree left focus<CR>')
-vim.keymap.set('n', '<C-b>', ':Neotree close<CR>')
-vim.keymap.set('n', '<leader>s', ':Neotree float<cr>')
+vim.keymap.set('n', '<C-f>', ':Neotree left focus<CR>', {silent = true, desc = "Neotree left focus"})
+vim.keymap.set('n', '<C-g>', ':Neotree right focus<CR>', {silent = true, desc = "Neotree Right focus"})
+vim.keymap.set('n', '<C-b>', ':Neotree close<CR>', {silent = true, desc = "Neotree Close"})
+vim.keymap.set('n', '<leader>s', ':Neotree float<cr>', {silent = true, desc = "Neotree float"})
 
 -------
 
@@ -118,43 +127,43 @@ vim.g.vcool_ins_rgba_map = '<A-v>'
 -------
 
 -- Telescope keymaps
-vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>d', ':Telescope oldfiles<CR>', { silent = true })
-vim.keymap.set('n', '<leader>aq', ':Telescope live_grep<CR>', { silent = true })
-vim.keymap.set('n', '<leader>q', ':Telescope current_buffer_fuzzy_find<CR>', { silent = true })
-vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true })
-vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true })
-vim.keymap.set('n', '<leader>vs', ':Telescope treesitter<CR>', { silent = true })
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { silent = true, desc = "T -> Find files in pwd" })
+vim.keymap.set('n', '<leader>d', ':Telescope oldfiles<CR>', { silent = true, desc = "T -> Old Files" })
+vim.keymap.set('n', '<leader>aq', ':Telescope live_grep<CR>', { silent = true, desc = "T -> Search all over pwd" })
+vim.keymap.set('n', '<leader>q', ':Telescope current_buffer_fuzzy_find<CR>', { silent = true, desc = "T -> Search in current buffer" })
+vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true, desc = "T -> Keymaps CheatSheet" })
+vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true, desc = "T -> man Pages" })
+vim.keymap.set('n', '<leader>vs', ':Telescope lsp_document_symbols<CR>', { silent = true, desc = "T -> Code Navigation in current buffer" })
+vim.keymap.set('n', '<leader>ju', ':Telescope jumplist<CR>', { silent = true, desc = "T -> jumplist" })
 
 -------
-
 -- Open Terminal
-vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>')             -- open float
-vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>')      -- save then open float
-vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>')        -- open horizontal
-vim.keymap.set('n', '<leader>tyh', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>') -- save then open horizontal
-vim.keymap.set('n', '<leader>tv', ':lua require("nvterm.terminal").toggle "vertical"<CR>')          -- open vertical
-vim.keymap.set('n', '<leader>tyv', ':w<CR>:lua require("nvterm.terminal").toggle "vertical"<CR>')   -- save then open vertical
+vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float" })             -- open float
+vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float + :w" })      -- save then open float
+vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal" })        -- open horizontal
+vim.keymap.set('n', '<leader>tyh', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal + :w" }) -- save then open horizontal
+vim.keymap.set('n', '<leader>tv', ':lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical" })          -- open vertical
+vim.keymap.set('n', '<leader>tyv', ':w<CR>:lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical + :w" })   -- save then open vertical
 
 -------
 
 -- Keymaps cheat sheet
-vim.keymap.set('n', '<leader>w', ':WhichKey<CR>', { silent = true })
+vim.keymap.set('n', '<leader>w', ':WhichKey<CR>', { silent = true, desc = "Keymaps CheatSheet" })
 
 -------
 
--- Navigation in code
-vim.keymap.set('n', '<F8>', ':TagbarToggle<CR>')
+-- Tagbar Navigation in code
+vim.keymap.set('n', '<F8>', ':TagbarToggle<CR><C-W>l', { noremap = true, desc = "Code Navigation in Tab Bar" })
 
 -------
 
 -- Auto JSON Formatter
-vim.keymap.set('n', '<C-j><C-j>', ':JSONFormatter<CR>')
+vim.keymap.set('n', '<C-j><C-j>', ':JSONFormatter<CR>', { desc = "JSON Formatter" })
 
 -------
 
 -- Trouble Toggle
-vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>', { silent = true, desc = "Toggle TroubleToggle"  })
 
 -------
 
@@ -165,27 +174,27 @@ vim.keymap.set('n', '<leader>hn', ':DashboardNewFile<cr>', { silent = true, nore
 -------
 
 -- LSP
--- go to Declaration and Definition
-vim.keymap.set('n', '<leader>gf', ':lua vim.lsp.buf.definition()<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.declaration()<CR>', { silent = true })
---Auto Formatter
-vim.keymap.set('n', '<leader>ll', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
+-- go to Declaration & Definition
+vim.keymap.set('n', '<leader>gf', ':lua vim.lsp.buf.definition()<CR>', { silent = true, desc = "LSP -> Definition" })
+vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.declaration()<CR>', { silent = true, desc = "LSP -> Declaration" })
+-- Auto Formatter
+vim.keymap.set('n', '<leader>ll', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true, desc = "LSP -> Formatter" })
 -- Change Var name across file
-vim.keymap.set('n', '<leader>rq', ':lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<leader>rq', ':lua vim.lsp.buf.rename()<CR>', { desc = "LSP -> Rename" })
 -- Code Action
-vim.keymap.set('n', '<leader>ko', ':lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<leader>ko', ':lua vim.lsp.buf.code_action()<CR>', { desc = "LSP -> Code Action" })
 
 -------
 
 -- Markdown Preview
-vim.keymap.set('n', '<leader>md', ':MarkdownPreview<CR>')
-vim.keymap.set('n', '<leader>mds', ':MarkdownPreviewStop<CR>')
+vim.keymap.set('n', '<leader>md', ':MarkdownPreview<CR>', { desc = "md Preview" })
+vim.keymap.set('n', '<leader>mds', ':MarkdownPreviewStop<CR>', { desc = "md Preview Stop" })
 
 -------
 
 -- LiveServer
-vim.keymap.set('n', '<leader>ls', ':LiveServerStart<CR>')
-vim.keymap.set('n', '<leader>lss', ':LiveServerStop<CR>')
+vim.keymap.set('n', '<leader>ls', ':LiveServerStart<CR>', { desc = "Start Live Server" })
+vim.keymap.set('n', '<leader>lss', ':LiveServerStop<CR>', { desc = "Stop Live Server" })
 
 -------
 
@@ -196,34 +205,52 @@ vim.g.doge_mapping = {
     jump_forward = '',
     jump_backward = '',
 }
-vim.keymap.set('n', '<leader>p', '<Plug>(doge-generate)', { silent = true })
-vim.keymap.set('n', '<leader>]', '<Plug>(doge-comment-jump-forward)', { silent = true })
-vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent = true })
+vim.keymap.set('n', '<leader>p', '<Plug>(doge-generate)', { silent = true, desc = "Doge -> Generate Doc" })
+vim.keymap.set('n', '<leader>]', '<Plug>(doge-comment-jump-forward)', { silent = true, desc = "Doge -> jump forward" })
+vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent = true, desc = "Doge -> jump backward" })
 
 -------
 
--- cphelper.nvim
+-- cphelper => copmetitive programming helper
 
-vim.keymap.set('n', '<leader>cpr', ':CphReceive<CR>');
-vim.keymap.set('n', '<leader>cpt', ':CphTest<CR>');
-vim.keymap.set('n', '<leader>cpe', ':CphEdit   ');
+vim.keymap.set('n', '<leader>cpr', ':CphReceive<CR>', { desc = "Cph -> Receive" });
+vim.keymap.set('n', '<leader>cpt', ':CphTest<CR>', { desc = "Cph -> Test" });
+vim.keymap.set('n', '<leader>cpe', ':CphEdit   ', { desc = "Cph -> Edit/Add" });
 
 -------
 
 -- undotree
 
-vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<F5>', ':lua vim.cmd.UndotreeToggle()<CR><C-W>h<C-W>k', { desc = "Toggle UndoTree" })
 
 -------
 
 -- session manager
 
-vim.keymap.set('n', '<leader>ts', ':SessionManager save_current_session<CR>')
-vim.keymap.set('n', '<leader>tl', ':SessionManager load_session<CR>')
-vim.keymap.set('n', '<leader>tnl', ':SessionManager load_last_session<CR>')
-vim.keymap.set('n', '<leader>tpl', ':SessionManager load_current_dir_session<CR>')
-vim.keymap.set('n', '<leader>td', ':SessionManager delete_session<CR>')
-vim.keymap.set('n', '<leader>tpd', ':SessionManager delete_current_dir_session<CR>')
+vim.keymap.set('n', '<leader>ts', ':SessionManager save_current_session<CR>', { desc = "Session -> save current" })
+vim.keymap.set('n', '<leader>tl', ':SessionManager load_session<CR>', { desc = "Session -> load sessions" })
+vim.keymap.set('n', '<leader>tnl', ':SessionManager load_last_session<CR>', { desc = "Session -> load last session" })
+vim.keymap.set('n', '<leader>tpl', ':SessionManager load_current_dir_session<CR>', { desc = "Session -> load pwd session" })
+vim.keymap.set('n', '<leader>td', ':SessionManager delete_session<CR>', { desc = "Session -> delete sessions" })
+vim.keymap.set('n', '<leader>tpd', ':SessionManager delete_current_dir_session<CR>', { desc = "Session -> delete pwd session" })
 
+-------
+
+-- spectre => Search and Replace
+
+vim.keymap.set('n', '<leader>rss', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Spectre -> Toggle Menu" })
+vim.keymap.set('n', '<leader>rwsa', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', { desc = "Spectre -> Search curr word" })
+vim.keymap.set('v', '<leader>rwsa', '<esc><cmd>lua require("spectre").open_visual()<CR>', { desc = "Spectre -> Search current word" })
+vim.keymap.set('n', '<leader>rwss', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Spectre -> Search curr word on curr buffer" })
+
+-------
+
+-- ufo folds
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself.
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = "UFO -> Open All Folds"})
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close All Folds"})
+
+
+-------
 
 -- [[ END ]] --

@@ -48,7 +48,6 @@ return require('packer').startup(function(use)
     -- Tagbar for code navigation
     use 'https://github.com/preservim/tagbar'
 
-
     -- Discord presence
     use 'andweeb/presence.nvim'
     require("presence").setup({
@@ -210,4 +209,31 @@ return require('packer').startup(function(use)
 
     -- session manager
     use 'Shatur/neovim-session-manager'
+
+    -- remove highlight after search
+    use {
+        'nvimdev/hlsearch.nvim',
+        event = 'BufRead',
+        config = function()
+            require('hlsearch').setup()
+        end
+    }
+
+    -- spectre, search and replace
+    use 'nvim-pack/nvim-spectre'
+
+    -- surround
+    use({
+        "kylechui/nvim-surround",
+        tag = "*",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+            require("nvim-surround").buffer_setup()
+        end
+    })
+
+    -- ufo, folds
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 end)

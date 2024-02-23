@@ -1,8 +1,8 @@
---[[ Global Setting and Global Variables ]]
-                                            --
+--[[ Global Setting and Global Variables ]]--
 
 
-vim.cmd(':setlocal spell spelllang=en_us')
+vim.opt_local.spell = true
+vim.opt_local.spelllang = "en_us"
 
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
@@ -25,6 +25,9 @@ vim.opt.swapfile = false
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.clipboard = 'unnamedplus'
 
