@@ -127,6 +127,7 @@ vim.g.vcool_ins_rgba_map = '<A-v>'
 -------
 
 -- Telescope keymaps
+vim.keymap.set('n', '<leader>tt', ':Telescope<CR>', { silent = true, desc = "T -> Telescope Menu" })
 vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { silent = true, desc = "T -> Find files in pwd" })
 vim.keymap.set('n', '<leader>d', ':Telescope oldfiles<CR>', { silent = true, desc = "T -> Old Files" })
 vim.keymap.set('n', '<leader>aq', ':Telescope live_grep<CR>', { silent = true, desc = "T -> Search all over pwd" })
@@ -138,12 +139,12 @@ vim.keymap.set('n', '<leader>ju', ':Telescope jumplist<CR>', { silent = true, de
 
 -------
 -- Open Terminal
-vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float" })             -- open float
-vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float + :w" })      -- save then open float
-vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal" })        -- open horizontal
-vim.keymap.set('n', '<leader>tyh', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal + :w" }) -- save then open horizontal
-vim.keymap.set('n', '<leader>tv', ':lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical" })          -- open vertical
-vim.keymap.set('n', '<leader>tyv', ':w<CR>:lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical + :w" })   -- save then open vertical
+vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float" })                        -- open float
+vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float + :w" })            -- :w then open float
+vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal" })              -- open horizontal
+vim.keymap.set('n', '<leader>tyh', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal + :w" })  -- :w then open horizontal
+vim.keymap.set('n', '<leader>tv', ':lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical" })                  -- open vertical
+vim.keymap.set('n', '<leader>tyv', ':w<CR>:lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical + :w" })      -- :w then open vertical
 
 -------
 
