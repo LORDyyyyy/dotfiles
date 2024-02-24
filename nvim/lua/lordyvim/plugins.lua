@@ -236,4 +236,6 @@ return require('packer').startup(function(use)
 
     -- ufo, folds
     use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+    use 'github/copilot.vim'
 end)

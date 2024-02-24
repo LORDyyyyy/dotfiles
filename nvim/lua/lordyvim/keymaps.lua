@@ -108,8 +108,8 @@ vim.keymap.set('n', '<C-M-p>', ':BufferMoveNext<CR>', { silent = true, desc = "T
 
 
 -------------------------------
---[[ Plugins Keymapping ]]
---
+--[[ Plugins Keymapping ]]--
+-------------------------------
 
 -- Neotree keymap
 vim.keymap.set('n', '<C-f>', ':Neotree left focus<CR>', {silent = true, desc = "Neotree left focus"})
@@ -138,7 +138,9 @@ vim.keymap.set('n', '<leader>vs', ':Telescope lsp_document_symbols<CR>', { silen
 vim.keymap.set('n', '<leader>ju', ':Telescope jumplist<CR>', { silent = true, desc = "T -> jumplist" })
 
 -------
+
 -- Open Terminal
+
 vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float" })                        -- open float
 vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float + :w" })            -- :w then open float
 vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal" })              -- open horizontal
@@ -175,6 +177,7 @@ vim.keymap.set('n', '<leader>hn', ':DashboardNewFile<cr>', { silent = true, nore
 -------
 
 -- LSP
+
 -- go to Declaration & Definition
 vim.keymap.set('n', '<leader>gf', ':lua vim.lsp.buf.definition()<CR>', { silent = true, desc = "LSP -> Definition" })
 vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.declaration()<CR>', { silent = true, desc = "LSP -> Declaration" })
@@ -253,5 +256,21 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close A
 
 
 -------
+
+-- copilot
+
+vim.g.copilot_no_tab_map = true -- disable the <Tab> keymap 
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_enable = false
+
+vim.keymap.set('n', '<leader>cpod', ':Copilot disable<CR>', { desc = "Copilot -> Disable"})
+vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> Enable"})
+vim.keymap.set('n', '<leader>cpop', ':Copilot panel<CR>', { desc = "Copilot -> Panel"})
+vim.keymap.set('n', '<leader>cpos', ':Copilot status<CR>', { desc = "Copilot -> Status"})
+
+vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = {"Copilot -> Accept Answer"} })
+
+--------
+
 
 -- [[ END ]] --
