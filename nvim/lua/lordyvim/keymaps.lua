@@ -31,7 +31,7 @@ vim.keymap.set('n', '<leader>topwd', ':set autochdir<CR>', { desc = "Change work
 vim.keymap.set('n', '<leader>todir', ':cd    ', { desc = "Change working path" })
 
 -- Make file executable
-vim.keymap.set("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true , desc = "chmod +x current_file" })
+vim.keymap.set("n", "<leader>+x", "<cmd>!chmod +x %<CR>", { silent = true , desc = "chmod +x current_file" })
 
 -- sudo :w
 vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %', { desc = "Save file as a super user (root)" })
@@ -134,7 +134,7 @@ vim.keymap.set('n', '<leader>aq', ':Telescope live_grep<CR>', { silent = true, d
 vim.keymap.set('n', '<leader>q', ':Telescope current_buffer_fuzzy_find<CR>', { silent = true, desc = "T -> Search in current buffer" })
 vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true, desc = "T -> Keymaps CheatSheet" })
 vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true, desc = "T -> man Pages" })
-vim.keymap.set('n', '<leader>vs', ':Telescope lsp_document_symbols<CR>', { silent = true, desc = "T -> Code Navigation in current buffer" })
+vim.keymap.set('n', '<leader>vs', ':Telescope lsp_document_symbols<CR>', { silent = true, desc = "T -> LSP -> Code Navigation in current buffer" })
 vim.keymap.set('n', '<leader>ju', ':Telescope jumplist<CR>', { silent = true, desc = "T -> jumplist" })
 
 -------
@@ -250,10 +250,10 @@ vim.keymap.set('n', '<leader>rwss', '<cmd>lua require("spectre").open_file_searc
 -------
 
 -- ufo folds
+
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself.
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = "UFO -> Open All Folds"})
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close All Folds"})
-
 
 -------
 
@@ -261,7 +261,7 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close A
 
 vim.g.copilot_no_tab_map = true -- disable the <Tab> keymap 
 vim.g.copilot_assume_mapped = true
-vim.g.copilot_enable = false
+vim.g.copilot_enabled = false
 
 vim.keymap.set('n', '<leader>cpod', ':Copilot disable<CR>', { desc = "Copilot -> Disable"})
 vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> Enable"})
@@ -271,6 +271,16 @@ vim.keymap.set('n', '<leader>cpos', ':Copilot status<CR>', { desc = "Copilot -> 
 vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = {"Copilot -> Accept Answer"} })
 
 --------
+
+-- Git
+
+vim.keymap.set('n', '<leader>git', ':Git   ', { desc = "Git -> Write a git command" })
+
+vim.keymap.set('n', '<leader>gtm', ':Gitsigns<CR>', { desc = "Git -> Menu" })
+vim.keymap.set('n', '<leader>gtp', ':Gitsigns preview_hunk<CR>', { desc = "Git -> Preview Hunk" })
+vim.keymap.set('n', '<leader>gtt', ':Gitsigns toggle_current_line_blame<CR>', { desc = "Git -> Toggle curr line Blame" })
+
+------
 
 
 -- [[ END ]] --

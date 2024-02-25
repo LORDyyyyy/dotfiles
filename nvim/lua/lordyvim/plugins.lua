@@ -120,6 +120,9 @@ return require('packer').startup(function(use)
 
     -- git signs
     use 'lewis6991/gitsigns.nvim'
+    require('gitsigns').setup()
+    -- vim-fugitive
+    use 'tpope/vim-fugitive'
 
     -- files tabs
     use 'romgrk/barbar.nvim'
@@ -234,8 +237,9 @@ return require('packer').startup(function(use)
         end
     })
 
-    -- ufo, folds
+    -- ufo - folds
     use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
+    -- copilot
     use 'github/copilot.vim'
 end)
