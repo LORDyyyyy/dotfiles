@@ -17,9 +17,11 @@ vim.cmd('command! -nargs=0 -bar WQ wq')
 
 vim.keymap.set('n', '<Tab>', 'a', { desc = "Map a to Tab" })
 
+-- Unmap 's' so I can use it with "Neotree float" command freely
 vim.keymap.set('n', 's', '', { desc = "Unmap s" })
 vim.keymap.set('n', 's', '', { desc = "Unmap s" })
 
+-- Save buffer by Ctrl + S
 vim.keymap.set('n', '<C-s>', ':w <CR>', { desc = "Save by Ctrl + s" })
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>i', { desc = "Save by Ctrl + s in insert mode" })
 
@@ -36,9 +38,10 @@ vim.keymap.set("n", "<leader>+x", "<cmd>!chmod +x %<CR>", { silent = true , desc
 -- sudo :w
 vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %', { desc = "Save file as a super user (root)" })
 
--- show the differences between two split files
-vim.keymap.set('n', '<leader>-d=', ':windo diffthis<CR>', { desc = "Open the Differences menu between 2 split files" })
-vim.keymap.set('n', '<leader>-d0', ':windo diffoff<CR>', { desc = "Close the Differences menu" })
+-- Show the differences between two split files
+vim.keymap.set('n', '<leader>-d=', ':windo diffthis<CR>', { desc = "Diff -> Open the Differences menu between 2 split files" })
+vim.keymap.set('n', '<leader>-d0', ':windo diffoff<CR>', { desc = "Diff -> Close the Differences menu" })
+
 
 -------------------------------
 --[[ Selection Key Mapping ]]
@@ -65,8 +68,11 @@ vim.keymap.set('v', '<C-x>', 'd')
 -- Cut line starting from the first non-white character till the end of line
 vim.keymap.set('n', 'dd', '^"_d0dd', { desc = "Cut line without indent"})
 
--- Delete empty line but do not send it to system clipboard
+-- Delete line but do not send it to system clipboard
 vim.keymap.set('n', 'df', '"_dd', { desc = "Cut line to the black hole"})
+
+-- Delete Selection in v mode but do not send it to system clipboard
+vim.keymap.set('v', 'f', '"_d', { desc = "Cut Selection to the black hole in v mode" })
 
 -- Copy line without the indent
 vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true, desc = "Copy line without indent" })
@@ -80,6 +86,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line/s DOWN
 
 -- Change word all over the buffer
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Search and Replace word" })
+
+-- Insert new empty line in normal mode
+vim.keymap.set('n', 'qq', 'i<CR><Esc>', { desc = "Insert new empty line in normal mode" })
 
 -------------------------------
 --[[ Navigation Key mapping ]]
