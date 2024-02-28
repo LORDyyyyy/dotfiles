@@ -1,8 +1,9 @@
 --[[ Global Setting and Global Variables ]]--
 
 
-vim.opt_local.spell = true
-vim.opt_local.spelllang = "en_us"
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+vim.opt.spellfile = '/home/lordy/.config/nvim/spell/en.utf-8.add'
 
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true

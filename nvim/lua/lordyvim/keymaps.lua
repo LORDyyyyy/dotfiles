@@ -74,6 +74,9 @@ vim.keymap.set('n', 'df', '"_dd', { desc = "Cut line to the black hole"})
 -- Delete Selection in v mode but do not send it to system clipboard
 vim.keymap.set('v', 'f', '"_d', { desc = "Cut Selection to the black hole in v mode" })
 
+-- Delete character to the black hole
+vim.keymap.set('n', 'f', '"_x', { desc = "Cut Character to the black hole in n mode" })
+
 -- Copy line without the indent
 vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true, desc = "Copy line without indent" })
 
@@ -252,9 +255,9 @@ vim.keymap.set('n', '<leader>tpd', ':SessionManager delete_current_dir_session<C
 -- spectre => Search and Replace
 
 vim.keymap.set('n', '<leader>rss', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Spectre -> Toggle Menu" })
-vim.keymap.set('n', '<leader>rwsa', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', { desc = "Spectre -> Search curr word" })
+vim.keymap.set('n', '<leader>rwsa', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', { desc = "Spectre -> Search current word" })
 vim.keymap.set('v', '<leader>rwsa', '<esc><cmd>lua require("spectre").open_visual()<CR>', { desc = "Spectre -> Search current word" })
-vim.keymap.set('n', '<leader>rwss', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Spectre -> Search curr word on curr buffer" })
+vim.keymap.set('n', '<leader>rwss', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Spectre -> Search current word on current buffer" })
 
 -------
 
@@ -287,9 +290,14 @@ vim.keymap.set('n', '<leader>git', ':Git   ', { desc = "Git -> Write a git comma
 
 vim.keymap.set('n', '<leader>gtm', ':Gitsigns<CR>', { desc = "Git -> Menu" })
 vim.keymap.set('n', '<leader>gtp', ':Gitsigns preview_hunk<CR>', { desc = "Git -> Preview Hunk" })
-vim.keymap.set('n', '<leader>gtt', ':Gitsigns toggle_current_line_blame<CR>', { desc = "Git -> Toggle curr line Blame" })
+vim.keymap.set('n', '<leader>gtt', ':Gitsigns toggle_current_line_blame<CR>', { desc = "Git -> Toggle current line Blame" })
 
 ------
+
+-- vim-illuminate 
+
+vim.keymap.set('n', '<M-o>', ':lua require("illuminate").goto_next_reference(wrap)<CR>', { desc = "Move the cursor to the closest references before cur" })
+vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wrap)<CR>', { desc = "Move the cur to the closest references after cur" })
 
 
 -- [[ END ]] --
