@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 
 
 -------------------------------
--- [[ Some Key Mapping ]]-
+-- [[ Some Key Mapping ]]--
 
 -- Map W to w, Wq to wq, Q to q, WQ to wq
 vim.cmd('command! -nargs=0 -bar W w')
@@ -81,17 +81,23 @@ vim.keymap.set('n', 'f', '"_x', { desc = "Cut Character to the black hole in n m
 vim.keymap.set('n', '<C-l>', ':lua require("lordyvim.plugs.utils").CopyTrimmedLine()<CR>', { silent = true, desc = "Copy line without indent" })
 
 -- Copy Word
-vim.keymap.set('n', '<C-w>', 'yiw', {desc = "Copy word"})
+vim.keymap.set('n', '<C-w>', 'yiw', {silent = true, desc = "Copy word"})
 
 -- Move Selected Lines
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line/s UP in v mode" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line/s DOWN in v mode" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selected line/s UP in v mode" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selected line/s DOWN in v mode" })
 
 -- Change word all over the buffer
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Search and Replace word" })
 
 -- Insert new empty line in normal mode
 vim.keymap.set('n', 'qq', 'i<CR><Esc>', { desc = "Insert new empty line in normal mode" })
+
+-- Replace current word with the last thing in the clipboard
+vim.keymap.set('n', '<C-r>w', '"_ciw<C-r>+', { desc = "Replace current word with the clipboard" })
+
+-- Replace current line with the last thing in the clipboard
+vim.keymap.set('n', '<C-r>l', '"_cc<C-r>+', { desc = "Replace current line with the clipboard" })
 
 -------------------------------
 --[[ Navigation Key mapping ]]
@@ -227,7 +233,7 @@ vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent 
 
 -------
 
--- cphelper => copmetitive programming helper
+-- cphelper => competitive programming helper
 
 vim.keymap.set('n', '<leader>cpr', ':CphReceive<CR>', { desc = "Cph -> Receive" });
 vim.keymap.set('n', '<leader>cpt', ':CphTest<CR>', { desc = "Cph -> Test" });
@@ -299,5 +305,6 @@ vim.keymap.set('n', '<leader>gtt', ':Gitsigns toggle_current_line_blame<CR>', { 
 vim.keymap.set('n', '<M-o>', ':lua require("illuminate").goto_next_reference(wrap)<CR>', { desc = "Move the cursor to the closest references before cur" })
 vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wrap)<CR>', { desc = "Move the cur to the closest references after cur" })
 
+------
 
 -- [[ END ]] --
