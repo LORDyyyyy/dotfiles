@@ -94,10 +94,10 @@ vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set('n', 'qq', 'i<CR><Esc>', { desc = "Insert new empty line in normal mode" })
 
 -- Replace current word with the last thing in the clipboard
-vim.keymap.set('n', '<C-r>w', '"_ciw<C-r>+', { desc = "Replace current word with the clipboard" })
+vim.keymap.set('n', '<leader>rew', '"_ciw<C-r>+', { desc = "Replace current word with the clipboard" })
 
 -- Replace current line with the last thing in the clipboard
-vim.keymap.set('n', '<C-r>l', '"_cc<C-r>+', { desc = "Replace current line with the clipboard" })
+vim.keymap.set('n', '<leader>rel', '"_cc<C-r>+', { desc = "Replace current line with the clipboard" })
 
 -------------------------------
 --[[ Navigation Key mapping ]]

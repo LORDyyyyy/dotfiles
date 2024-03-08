@@ -4,8 +4,9 @@ require 'nvim-treesitter.configs'.setup {
         "lua", "vim", "python",
         "css", "java", "rust",
         "html", "ruby", "bash",
-        "cpp", "go", "json", "php",
-        "puppet", "regex", "sql"
+        "cpp", "go", "json",
+        "php", "puppet", "regex",
+        "sql", "php"
     },
 
     sync_install = true,
@@ -17,5 +18,4 @@ require 'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
-
 }

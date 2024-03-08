@@ -1,3 +1,4 @@
+local util = require('lspconfig.util')
 local cmp = require('cmp')
 
 cmp.setup({
@@ -16,12 +17,11 @@ require("lspconfig").clangd.setup {
     },
 }
 
-require('lspconfig').phpactor.setup {
+require('lspconfig').intelephense.setup {
     on_attach = on_attach,
-    init_options = {
-        ["language_server_phpstan.enabled"] = true,
-        ["language_server_psalm.enabled"] = true,
-    }
+    filetypes = { "php" },
+    root_dir = util.root_pattern("composer.json", ".git"),
+    cmd = { "/usr/bin/intelephense", "--stdio" }
 }
 
 -- `/` cmdline setup.
@@ -31,7 +31,6 @@ cmp.setup.cmdline('/', {
         { name = 'buffer' }
     }
 })
-
 -- `:` cmdline setup.
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
