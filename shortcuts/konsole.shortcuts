@@ -24,7 +24,7 @@ edit_copy_contextmenu_out=none
 edit_find=Ctrl+Shift+F
 edit_find_next=none
 edit_find_prev=none
-edit_paste=Ctrl+V
+edit_paste=Ctrl+V;\s
 enlarge-font=Ctrl++; Ctrl+=
 equal-size-view=Ctrl+Shift+\\
 expand-active-view=Ctrl+Shift+]
@@ -121,6 +121,7 @@ toggle-line-numbers=Ctrl+Alt+\\
 toggle-maximize-current-view=Ctrl+Shift+E
 toggle-semantic-hints=none
 toggle-two-tabs=none
+toggle-zoom-current-view=Ctrl+Shift+Z
 view-readonly=none
 window-colorscheme-menu=none
 zmodem-upload=none

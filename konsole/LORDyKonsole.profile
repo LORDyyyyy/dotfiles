@@ -1,11 +1,11 @@
 [Appearance]
 AntiAliasFonts=true
 BoldIntense=true
-ColorScheme=New Color Scheme
-Font=DejaVu Sans Mono,11.7,-1,5,75,0,0,0,0,0,Bold
+ColorScheme=MainColorScheme
+Font=RobotoMono Nerd Font [GOOG],14,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
 IgnoreWcWidth=false
 LineSpacing=0
-TabColor=25,134,190
+TabColor=27,30,32,0
 UseFontLineChararacters=false
 WordModeAscii=false
 WordModeBrahmic=false
@@ -38,7 +38,7 @@ KeyBindings=default
 HistoryMode=1
 HistorySize=1000
 ScrollBarPosition=2
-ScrollFullPage=0
+ScrollFullPage=false
 
 [Terminal Features]
 BlinkingCursorEnabled=true

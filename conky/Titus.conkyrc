@@ -193,5 +193,5 @@ ${color5}${color5}${font Roboto:size=10}N E T W O R K   ${hr 2}${font}${color}
 ${color2}${offset 30}Eth Up:${color} ${alignr}${offset -10$}${upspeed enp5s0}${alignr}${upspeedgraph enp5s0 8,100}
 ${color2}${offset 30}Eth Down:${color} ${alignr}${offset -10$}${downspeed enp5s0}${alignr}${downspeedgraph enp5s0 8,100}
 ${color5}${font Roboto:size=10}${voffset 2}Prayer Table   ${hr 2}${font}${color}
-${exec /home/lordy/Programs/PrayerTime/prayerTimeTable | awk '{printf "  -  %-20s%50s\n", $1, $2}'}
+${exec /home/lordy/Programs/PrayerTime/prayerTimeTable | awk '{printf "  -  %-10s%22s\n", $1, $2}'}
 ]];
