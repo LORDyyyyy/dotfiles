@@ -242,4 +242,7 @@ return require('packer').startup(function(use)
 
     -- copilot
     use 'github/copilot.vim'
+
+    -- nvim-silicon, snapshots for your code
+    use 'michaelrommel/nvim-silicon'
 end)

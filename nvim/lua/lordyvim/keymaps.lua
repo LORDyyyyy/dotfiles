@@ -42,6 +42,8 @@ vim.keymap.set('n', '<leader>rootsave', ':w !sudo tee %', { desc = "Save file as
 vim.keymap.set('n', '<leader>-d=', ':windo diffthis<CR>', { desc = "Diff -> Open the Differences menu between 2 split files" })
 vim.keymap.set('n', '<leader>-d0', ':windo diffoff<CR>', { desc = "Diff -> Close the Differences menu" })
 
+-- Change tab width temporarily
+vim.keymap.set('n', '<leader>ctw', ':set shiftwidth=', { desc = "Change tab width temporarily" })
 
 -------------------------------
 --[[ Selection Key Mapping ]]
@@ -95,7 +97,6 @@ vim.keymap.set('n', 'qq', 'i<CR><Esc>', { desc = "Insert new empty line in norma
 
 -- Replace current word with the last thing in the clipboard
 vim.keymap.set('n', '<leader>rew', '"_ciw<C-r>+', { desc = "Replace current word with the clipboard" })
-
 -- Replace current line with the last thing in the clipboard
 vim.keymap.set('n', '<leader>rel', '"_cc<C-r>+', { desc = "Replace current line with the clipboard" })
 
@@ -306,5 +307,10 @@ vim.keymap.set('n', '<M-o>', ':lua require("illuminate").goto_next_reference(wra
 vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wrap)<CR>', { desc = "Move the cur to the closest references after cur" })
 
 ------
+
+-- Silicon, code snapshot
+
+vim.keymap.set('v', '<leader>ss', ':Silicon<CR>', { desc = "Silicon -> Take snapshot of current Selection" });
+vim.keymap.set('v', '<leader>sa', 'gg<ESC>VG:Silicon<CR>', { desc = "Silicon -> Take snapshot of entire buffer" });
 
 -- [[ END ]] --

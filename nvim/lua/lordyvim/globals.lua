@@ -1,9 +1,9 @@
 --[[ Global Setting and Global Variables ]]--
-
+local home = os.getenv("HOME")
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
-vim.opt.spellfile = '/home/lordy/.config/nvim/spell/en.utf-8.add'
+vim.opt.spellfile = home .. '/.config/nvim/spell/en.utf-8.add'
 
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
