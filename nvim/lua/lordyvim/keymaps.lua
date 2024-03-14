@@ -310,7 +310,8 @@ vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wra
 
 -- Silicon, code snapshot
 
-vim.keymap.set('v', '<leader>ss', ':Silicon<CR>', { desc = "Silicon -> Take snapshot of current Selection" });
-vim.keymap.set('v', '<leader>sa', 'gg<ESC>VG:Silicon<CR>', { desc = "Silicon -> Take snapshot of entire buffer" });
+vim.keymap.set('v', '<leader>as', ':Silicon<CR>', { desc = "Silicon -> Take snapshot of current Selection in v mode" });
+vim.keymap.set('v', '<leader>aa', 'gg<ESC>VG:Silicon<CR>', { desc = "Silicon -> Take snapshot of entire buffer in v mode" });
+vim.keymap.set('n', '<leader>aa', 'vgg<ESC>VG:Silicon<CR>', { desc = "Silicon -> Take snapshot of entire buffer in n mode" });
 
 -- [[ END ]] --
