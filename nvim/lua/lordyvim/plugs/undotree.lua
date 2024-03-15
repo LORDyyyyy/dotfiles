@@ -4,7 +4,7 @@ if vim.fn.has("persistent_undo") == 1 then
 
     -- Create the directory and any parent directories if it does not exist
     if vim.fn.isdirectory(target_path) == 0 then
-        vim.fn.mkdir(target_path, "p", 776)
+        vim.fn.mkdir(target_path, "p", 0776)
     end
 
     -- Set undodir and undofile

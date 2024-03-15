@@ -1,4 +1,5 @@
---[[ Global Setting and Global Variables ]]--
+--[[ Global Setting and Global Variables ]]
+--
 local home = os.getenv("HOME")
 
 vim.opt.spell = true
@@ -38,19 +39,4 @@ vim.cmd('set completeopt-=preview')
 
 vim.cmd('filetype plugin indent on')
 
-
-lsp_zero_event_on_tab = 'close_menu'
-
--- Airline
-airline_powerline_fonts = 1
-if not airline_symbols then
-    airline_symbols = {}
-end
--- Airline symbols
-airline_left_sep = ''
-airline_left_alt_sep = ''
-airline_right_sep = ''
-airline_right_alt_sep = ''
-airline_symbols.branch = ''
-airline_symbols.readonly = ''
-airline_symbols.linenr = ''
+vim.g.lsp_zero_event_on_tab = 'close_menu'

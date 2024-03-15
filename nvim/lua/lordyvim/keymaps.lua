@@ -1,10 +1,7 @@
 --[[ Have Fun! ]]
 --
 
-
-local utils = require('lordyvim.plugs.utils')
 vim.g.mapleader = " "
-
 
 -------------------------------
 -- [[ Some Key Mapping ]]--
@@ -138,6 +135,12 @@ vim.keymap.set('n', '<leader>s', ':Neotree float<cr>', {silent = true, desc = "N
 
 -------
 
+-- Neogit
+
+vim.keymap.set('n', '<leader>ng', ':Neogit<CR>', {silent = true, desc = "Neogit"})
+
+-------
+
 -- VCoolor keymaps
 vim.keymap.set('n', '<A-c>', ':VCoolor<CR>')
 vim.keymap.set('n', '<A-v>', ':silent VCoolor ra <CR>')
@@ -154,7 +157,8 @@ vim.keymap.set('n', '<leader>q', ':Telescope current_buffer_fuzzy_find<CR>', { s
 vim.keymap.set('n', '<leader>ww', ':Telescope keymaps<CR>', { silent = true, desc = "T -> Keymaps CheatSheet" })
 vim.keymap.set('n', '<leader>mp', ':Telescope man_pages<CR>', { silent = true, desc = "T -> man Pages" })
 vim.keymap.set('n', '<leader>vs', ':Telescope lsp_document_symbols<CR>', { silent = true, desc = "T -> LSP -> Code Navigation in current buffer" })
-vim.keymap.set('n', '<leader>ju', ':Telescope jumplist<CR>', { silent = true, desc = "T -> jumplist" })
+vim.keymap.set('n', '<leader>j', ':Telescope jumplist<CR>', { silent = true, desc = "T -> jumplist" })
+vim.keymap.set('n', '<leader>tg', ':Telescope<CR>git_', { silent = true, desc = "T -> git Menu" })
 
 -------
 
@@ -223,11 +227,6 @@ vim.keymap.set('n', '<leader>lss', ':LiveServerStop<CR>', { desc = "Stop Live Se
 
 -- Doge Auto Doc
 
-vim.g.doge_mapping = {
-    generate_doc_comment = '',
-    jump_forward = '',
-    jump_backward = '',
-}
 vim.keymap.set('n', '<leader>p', '<Plug>(doge-generate)', { silent = true, desc = "Doge -> Generate Doc" })
 vim.keymap.set('n', '<leader>]', '<Plug>(doge-comment-jump-forward)', { silent = true, desc = "Doge -> jump forward" })
 vim.keymap.set('n', '<leader>[', '<Plug>(doge-comment-jump-backward)', { silent = true, desc = "Doge -> jump backward" })
@@ -261,10 +260,10 @@ vim.keymap.set('n', '<leader>tpd', ':SessionManager delete_current_dir_session<C
 
 -- spectre => Search and Replace
 
-vim.keymap.set('n', '<leader>rss', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Spectre -> Toggle Menu" })
-vim.keymap.set('n', '<leader>rwsa', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', { desc = "Spectre -> Search current word" })
-vim.keymap.set('v', '<leader>rwsa', '<esc><cmd>lua require("spectre").open_visual()<CR>', { desc = "Spectre -> Search current word" })
-vim.keymap.set('n', '<leader>rwss', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Spectre -> Search current word on current buffer" })
+vim.keymap.set('n', '<leader>rss', ':lua require("spectre").toggle()<CR>', { desc = "Spectre -> Toggle Menu" })
+vim.keymap.set('n', '<leader>rwsa', ':lua require("spectre").open_visual({select_word=true})<CR>', { desc = "Spectre -> Search current word n mode on pwd" })
+vim.keymap.set('v', '<leader>rwsa', '<esc>:lua require("spectre").open_visual()<CR>', { desc = "Spectre -> Search current word v mode" })
+vim.keymap.set('n', '<leader>rwss', ':lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Spectre -> Search current word on current buffer" })
 
 -------
 
@@ -280,7 +279,7 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close A
 
 vim.g.copilot_no_tab_map = true -- disable the <Tab> keymap 
 vim.g.copilot_assume_mapped = true
-vim.g.copilot_enabled = false
+vim.g.copilot_enabled = false -- disable auto start
 
 vim.keymap.set('n', '<leader>cpod', ':Copilot disable<CR>', { desc = "Copilot -> Disable"})
 vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> Enable"})
@@ -292,16 +291,17 @@ vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = t
 --------
 
 -- Git
+-- see also Neogit
 
 vim.keymap.set('n', '<leader>git', ':Git   ', { desc = "Git -> Write a git command" })
 
 vim.keymap.set('n', '<leader>gtm', ':Gitsigns<CR>', { desc = "Git -> Menu" })
 vim.keymap.set('n', '<leader>gtp', ':Gitsigns preview_hunk<CR>', { desc = "Git -> Preview Hunk" })
-vim.keymap.set('n', '<leader>gtt', ':Gitsigns toggle_current_line_blame<CR>', { desc = "Git -> Toggle current line Blame" })
+vim.keymap.set('n', '<leader>gtb', ':Gitsigns toggle_current_line_blame<CR>', { desc = "Git -> Toggle current line Blame" })
 
 ------
 
--- vim-illuminate 
+-- vim-illuminate, detect same words
 
 vim.keymap.set('n', '<M-o>', ':lua require("illuminate").goto_next_reference(wrap)<CR>', { desc = "Move the cursor to the closest references before cur" })
 vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wrap)<CR>', { desc = "Move the cur to the closest references after cur" })
@@ -313,5 +313,14 @@ vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wra
 vim.keymap.set('v', '<leader>as', ':Silicon<CR>', { desc = "Silicon -> Take snapshot of current Selection in v mode" });
 vim.keymap.set('v', '<leader>aa', 'gg<ESC>VG:Silicon<CR>', { desc = "Silicon -> Take snapshot of entire buffer in v mode" });
 vim.keymap.set('n', '<leader>aa', 'vgg<ESC>VG:Silicon<CR>', { desc = "Silicon -> Take snapshot of entire buffer in n mode" });
+
+------
+
+-- RemoteSSH
+
+vim.keymap.set('n', '<leader>rshc', ':RemoteSSHFSConnect<CR>', { desc = "RemoteSSH -> Connect to a server" });
+vim.keymap.set('n', '<leader>rshd', ':RemoteSSHFSDisconnect<CR>', { desc = "RemoteSSH -> Disconnect from a server" });
+
+------
 
 -- [[ END ]] --

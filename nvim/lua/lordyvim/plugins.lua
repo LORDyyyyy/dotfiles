@@ -6,7 +6,6 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-
     -- Telescope
     use {
         'nvim-telescope/telescope.nvim',
@@ -19,30 +18,27 @@ return require('packer').startup(function(use)
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
 
-
     -- Live server
     use('barrett-ruth/live-server.nvim')
     require('live-server').setup()
 
-
     -- Color picker
     use('KabbAmine/vCoolor.vim')
-
 
     -- blank lines
     use('lukas-reineke/indent-blankline.nvim')
 
-
     -- For Commenting gcc/gbc & gc/gb
     use 'https://github.com/tpope/vim-commentary'
-
 
     -- CSS Color Preview
     use 'https://github.com/ap/vim-css-color'
 
-
     -- Developer Icons
     use 'https://github.com/ryanoasis/vim-devicons'
+    -- web dev Icons
+    use 'nvim-tree/nvim-web-devicons'
+
 
 
     -- Tagbar for code navigation
@@ -54,12 +50,14 @@ return require('packer').startup(function(use)
         main_image = "file",
     })
 
-
     -- Treesitter
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use 'nvim-treesitter/playground'
-    use 'norcalli/nvim-colorizer.lua'
 
+    -- color highlighter
+    use 'norcalli/nvim-colorizer.lua'
+    -- Enable colorizer
+    require('colorizer').setup()
 
     -- neotree
     use {
@@ -72,7 +70,20 @@ return require('packer').startup(function(use)
         },
         source_selector = { statusline = true }
     }
+    -- neogit
+    use {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",  -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
 
+            -- Only one of these is needed, not both.
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+        config = function()
+            require('neogit').setup()
+        end
+    }
 
     -- which key
     use {
@@ -84,7 +95,6 @@ return require('packer').startup(function(use)
         end
     }
 
-
     -- NvChad Terminal
     use {
         "NvChad/nvterm",
@@ -93,7 +103,6 @@ return require('packer').startup(function(use)
         end,
     }
 
-
     -- Themes
     use 'tinted-theming/base16-vim'
     use "folke/tokyonight.nvim"
@@ -101,22 +110,11 @@ return require('packer').startup(function(use)
     use 'navarasu/onedark.nvim'
     use "NLKNguyen/papercolor-theme"
 
-
     -- Auto JSON Formatter
     use 'XadillaX/json-formatter.vim'
 
-
     -- lsp colors
     use 'folke/lsp-colors.nvim'
-
-
-    -- Enable colorizer
-    require('colorizer').setup()
-
-
-    -- web dev Icons
-    use 'nvim-tree/nvim-web-devicons'
-
 
     -- git signs
     use 'lewis6991/gitsigns.nvim'
@@ -127,17 +125,14 @@ return require('packer').startup(function(use)
     -- files tabs
     use 'romgrk/barbar.nvim'
 
-
     -- Dashboard
     use { 'glepnir/dashboard-nvim', commit = 'f7d623457d6621b25a1292b24e366fae40cb79ab' }
-
 
     -- trouble
     use {
         'folke/trouble.nvim',
         requires = { { 'nvim-tree/nvim-web-devicons' } }
     }
-
 
     -- LSP
     use {
@@ -161,7 +156,6 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },             -- Required
             { 'rafamadriz/friendly-snippets' }, -- Optional
-            -- { 'j-hui/fidget.nvim' },   -- Optional
         }
     }
     local lsp = require('lsp-zero').preset({
@@ -170,19 +164,17 @@ return require('packer').startup(function(use)
         manage_nvim_cmp = true,
         suggest_lsp_servers = true,
     })
-
     lsp.setup()
-
 
     -- multi cursor, vscode like
     use 'mg979/vim-visual-multi'
 
     -- markdown Preview
     -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    -- use({
+    --     "iamcco/markdown-preview.nvim",
+    --     run = function() vim.fn["mkdp#util#install"]() end,
+    -- })
 
     use({
         "iamcco/markdown-preview.nvim",
@@ -193,10 +185,8 @@ return require('packer').startup(function(use)
         ft = { "markdown" },
     })
 
-
     -- detect the same words
     use 'RRethy/vim-illuminate'
-
 
     -- Doge auto Documentation
     use {
@@ -237,12 +227,36 @@ return require('packer').startup(function(use)
         end
     })
 
-    -- ufo - folds
-    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+    -- ufo folds
+    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
     -- copilot
     use 'github/copilot.vim'
 
     -- nvim-silicon, snapshots for your code
     use 'michaelrommel/nvim-silicon'
+
+    -- barbecue winbar
+    use({
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        after = "nvim-web-devicons",
+        config = function()
+            require("barbecue").setup()
+        end
+    })
+
+    -- nvim-notify - Notifications UI
+    use 'rcarriga/nvim-notify'
+
+    -- remote ssh mounting
+    use {
+        'nosduco/remote-sshfs.nvim',
+        requires = { { 'nvim-telescope/telescope.nvim' } },
+    }
+    require('remote-sshfs').setup({})
 end)
