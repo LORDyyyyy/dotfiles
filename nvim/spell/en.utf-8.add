@@ -320,3 +320,8 @@ RemoteSSH
 isWinner
 notAWiner
 isWinnernotAWiner
+unstage
+sourceMap
+inlineSourceMap
+cmp
+util

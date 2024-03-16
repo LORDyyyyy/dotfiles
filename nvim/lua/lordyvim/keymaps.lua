@@ -116,7 +116,7 @@ vim.keymap.set('n', '<A-]>', ':horizontal resize -1<CR>', { noremap = true, sile
 -- Tabs Plugin keymaps
 vim.keymap.set('n', '<A-Left>', ':BufferPrevious<CR>', { silent = true, desc = "Tabs -> GOTO Next" })
 vim.keymap.set('n', '<A-Right>', ':BufferNext<CR>', { silent = true, desc = "Tabs -> GOTO Prev" })
-vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true, desc = "Tabs -> Buffer Tab :wq" })
+vim.keymap.set('n', '<A-m>', ':BufferClose<CR>', { silent = true, desc = "Tabs -> Buffer Tab :q" })
 vim.keymap.set('n', '<A-n>', ':BufferClose!<CR>', { silent = true, desc = "Tabs -> Buffer Tab :q!"}) -- Discard Current Buffer Saving
 -- Move Tabs
 vim.keymap.set('n', '<C-M-o>', ':BufferMovePrevious<CR>', { silent = true, desc = "Tabs -> Move tab to the left" })
@@ -179,7 +179,8 @@ vim.keymap.set('n', '<leader>w', ':WhichKey<CR>', { silent = true, desc = "Keyma
 -------
 
 -- Tagbar Navigation in code
-vim.keymap.set('n', '<F8>', ':TagbarToggle<CR><C-W>l', { noremap = true, desc = "Code Navigation in Tab Bar" })
+
+vim.keymap.set('n', '<F8>', ':TagbarOpen<CR><C-W>l', { silent = true, noremap = true, desc = "Code Navigation in Tab Bar" })
 
 -------
 
@@ -286,7 +287,8 @@ vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> 
 vim.keymap.set('n', '<leader>cpop', ':Copilot panel<CR>', { desc = "Copilot -> Panel"})
 vim.keymap.set('n', '<leader>cpos', ':Copilot status<CR>', { desc = "Copilot -> Status"})
 
-vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = {"Copilot -> Accept Answer"} })
+vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = "Copilot -> Answer accept" })
+vim.keymap.set("i", "<C-]>", 'copilot#Dismiss()', { silent = true, expr = true, desc = "Copilot -> Answer dismiss" })
 
 --------
 
@@ -303,8 +305,10 @@ vim.keymap.set('n', '<leader>gtb', ':Gitsigns toggle_current_line_blame<CR>', { 
 
 -- vim-illuminate, detect same words
 
-vim.keymap.set('n', '<M-o>', ':lua require("illuminate").goto_next_reference(wrap)<CR>', { desc = "Move the cursor to the closest references before cur" })
-vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wrap)<CR>', { desc = "Move the cur to the closest references after cur" })
+vim.keymap.set('n', '<M-o>', ':lua require("illuminate").goto_next_reference(wrap)<CR>', {
+            silent = true,  desc = "Move the cursor to the closest references before cur" })
+vim.keymap.set('n', '<M-p>', ':lua require("illuminate").goto_prev_reference(wrap)<CR>', {
+            silent = true, desc = "Move the cur to the closest references after cur" })
 
 ------
 

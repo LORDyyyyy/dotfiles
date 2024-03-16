@@ -20,7 +20,6 @@ return require('packer').startup(function(use)
 
     -- Live server
     use('barrett-ruth/live-server.nvim')
-    require('live-server').setup()
 
     -- Color picker
     use('KabbAmine/vCoolor.vim')
@@ -52,6 +51,7 @@ return require('packer').startup(function(use)
 
     -- Treesitter
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/playground'
 
     -- color highlighter
@@ -119,6 +119,7 @@ return require('packer').startup(function(use)
     -- git signs
     use 'lewis6991/gitsigns.nvim'
     require('gitsigns').setup()
+
     -- vim-fugitive
     use 'tpope/vim-fugitive'
 
@@ -137,7 +138,7 @@ return require('packer').startup(function(use)
     -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },             -- Required
@@ -154,28 +155,15 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-cmdline' },      -- Optional
 
             -- Snippets
-            { 'L3MON4D3/LuaSnip' },             -- Required
-            { 'rafamadriz/friendly-snippets' }, -- Optional
+            { 'L3MON4D3/LuaSnip',                 run = "make install_jsregexp" }, -- Required
+            { 'rafamadriz/friendly-snippets' },                    -- Optional
         }
     }
-    local lsp = require('lsp-zero').preset({
-        name = 'minimal',
-        set_lsp_keymaps = true,
-        manage_nvim_cmp = true,
-        suggest_lsp_servers = true,
-    })
-    lsp.setup()
 
     -- multi cursor, vscode like
     use 'mg979/vim-visual-multi'
 
     -- markdown Preview
-    -- install without yarn or npm
-    -- use({
-    --     "iamcco/markdown-preview.nvim",
-    --     run = function() vim.fn["mkdp#util#install"]() end,
-    -- })
-
     use({
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
@@ -221,7 +209,8 @@ return require('packer').startup(function(use)
         tag = "*",
         config = function()
             require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
+                -- Configuration here
+                -- or leave empty to use defaults
             })
             require("nvim-surround").buffer_setup()
         end
@@ -259,4 +248,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-telescope/telescope.nvim' } },
     }
     require('remote-sshfs').setup({})
+
+    -- brackets closer
+    use 'rstacruz/vim-closer'
 end)

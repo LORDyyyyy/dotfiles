@@ -1,0 +1,15 @@
+{
+    "Class snippet and documentation section": {
+        "scope": "python",
+        "prefix": "dclass",
+        "body": [
+            "class ${1:ClassName}:",
+            "\t\"\"\" ${2:Doc} \"\"\"",
+            "",
+            "\tdef __init__(self, ${3:params}):",
+            "\t\t${4:self.param} = ${3:params}",
+            ""
+        ],
+        "description": "Class Snippet with docuemtation\nand auto constructor parameters initilization"
+    }
+}

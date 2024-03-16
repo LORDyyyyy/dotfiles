@@ -7,11 +7,13 @@ vim.g.airline_section_y = vim.fn["airline#section#create"]({ '  ', 'ffenc'
 vim.g.airline_section_z = vim.fn["airline#section#create"]({ 'linenr', 'maxlinenr', 'colnr' })
 
 -- Add the file language icon to the line besides the file language name
-vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, { callback =  function()
-    local fileNameIcon = devicon.get_icon(vim.fn.expand("%:p")) or ""
-    fileNameIcon = " " .. fileNameIcon .. " " ..  vim.bo.filetype
-    vim.g.airline_section_x = vim.fn["airline#section#create"]({ fileNameIcon })
-end })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
+    callback = function()
+        local fileNameIcon = devicon.get_icon(vim.fn.expand("%:p")) or ""
+        fileNameIcon = " " .. fileNameIcon .. " " .. vim.bo.filetype
+        vim.g.airline_section_x = vim.fn["airline#section#create"]({ fileNameIcon })
+    end
+})
 
 -- Airline symbols
 vim.g.airline_left_sep = ''
