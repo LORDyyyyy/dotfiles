@@ -3,7 +3,7 @@
         "scope": "javascript,typescript",
         "prefix": "cl",
         "body": [
-            "console.log(`${1:Here}`);"
+            "console.log(`${1:Here}`)"
         ],
         "description": "console.log(`write here what you want to log.`)"
     }

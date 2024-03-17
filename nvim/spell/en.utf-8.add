@@ -325,3 +325,13 @@ sourceMap
 inlineSourceMap
 cmp
 util
+blankline
+pyls
+pylsp
+flake8
+isort
+mypy
+PylspInstall
+noqa
+scrollbar
+spectre

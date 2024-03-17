@@ -34,11 +34,9 @@ return require('packer').startup(function(use)
     use 'https://github.com/ap/vim-css-color'
 
     -- Developer Icons
-    use 'https://github.com/ryanoasis/vim-devicons'
-    -- web dev Icons
+    use 'ryanoasis/vim-devicons'
+    -- Web dev Icons
     use 'nvim-tree/nvim-web-devicons'
-
-
 
     -- Tagbar for code navigation
     use 'https://github.com/preservim/tagbar'
@@ -51,7 +49,6 @@ return require('packer').startup(function(use)
 
     -- Treesitter
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'nvim-treesitter/playground'
 
     -- color highlighter
@@ -95,13 +92,8 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- NvChad Terminal
-    use {
-        "NvChad/nvterm",
-        config = function()
-            require("nvterm").setup()
-        end,
-    }
+    -- Terminal
+    use { "akinsho/toggleterm.nvim", tag = '*' }
 
     -- Themes
     use 'tinted-theming/base16-vim'
@@ -156,7 +148,7 @@ return require('packer').startup(function(use)
 
             -- Snippets
             { 'L3MON4D3/LuaSnip',                 run = "make install_jsregexp" }, -- Required
-            { 'rafamadriz/friendly-snippets' },                    -- Optional
+            { 'rafamadriz/friendly-snippets' },                                    -- Optional
         }
     }
 
@@ -198,6 +190,14 @@ return require('packer').startup(function(use)
         config = function()
             require('hlsearch').setup()
         end
+    }
+    -- navigation through search results easier
+    use {
+        "kevinhwang91/nvim-hlslens",
+        config = function()
+            require('hlslens').setup()
+            require("scrollbar.handlers.search").setup({}) -- scrollbar setup
+        end,
     }
 
     -- spectre, search and replace
@@ -249,6 +249,9 @@ return require('packer').startup(function(use)
     }
     require('remote-sshfs').setup({})
 
-    -- brackets closer
-    use 'rstacruz/vim-closer'
+    -- symbols icons
+    use 'onsails/lspkind.nvim'
+
+    -- scrollbar
+    use 'petertriho/nvim-scrollbar'
 end)

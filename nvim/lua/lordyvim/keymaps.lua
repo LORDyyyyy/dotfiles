@@ -164,12 +164,12 @@ vim.keymap.set('n', '<leader>tg', ':Telescope<CR>git_', { silent = true, desc = 
 
 -- Open Terminal
 
-vim.keymap.set('n', '<leader>tf', ':lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float" })                        -- open float
-vim.keymap.set('n', '<leader>tyf', ':w<CR>:lua require("nvterm.terminal").toggle "float"<CR>', { desc = "Terminal float + :w" })            -- :w then open float
-vim.keymap.set('n', '<leader>th', ':lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal" })              -- open horizontal
-vim.keymap.set('n', '<leader>tyh', ':w<CR>:lua require("nvterm.terminal").toggle "horizontal"<CR>', { desc = "Terminal horizontal + :w" })  -- :w then open horizontal
-vim.keymap.set('n', '<leader>tv', ':lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical" })                  -- open vertical
-vim.keymap.set('n', '<leader>tyv', ':w<CR>:lua require("nvterm.terminal").toggle "vertical"<CR>', { desc = "Terminal vertical + :w" })      -- :w then open vertical
+vim.keymap.set('n', '<leader>tf', ':ToggleTerm direction=float<CR>', { desc = "Terminal float" })                        -- open float
+vim.keymap.set('n', '<leader>tyf', ':w<CR>:ToggleTerm direction=float<CR>', { desc = "Terminal float + :w" })            -- :w then open float
+vim.keymap.set('n', '<leader>th', ':ToggleTerm direction=horizontal<CR>', { desc = "Terminal horizontal" })              -- open horizontal
+vim.keymap.set('n', '<leader>tyh', ':w<CR>:ToggleTerm direction=horizontal<CR>', { desc = "Terminal horizontal + :w" })  -- :w then open horizontal
+vim.keymap.set('n', '<leader>tv', ':ToggleTerm direction=vertical<CR>', { desc = "Terminal vertical" })                  -- open vertical
+vim.keymap.set('n', '<leader>tyv', ':w<CR>:ToggleTerm direction=vertical<CR>', { desc = "Terminal vertical + :w" })      -- :w then open vertical
 
 -------
 
@@ -180,7 +180,7 @@ vim.keymap.set('n', '<leader>w', ':WhichKey<CR>', { silent = true, desc = "Keyma
 
 -- Tagbar Navigation in code
 
-vim.keymap.set('n', '<F8>', ':TagbarOpen<CR><C-W>l', { silent = true, noremap = true, desc = "Code Navigation in Tab Bar" })
+vim.keymap.set('n', '<F8>', ':TagbarOpenAutoClose<CR><C-W>l', { silent = true, noremap = true, desc = "Code Navigation in Tab Bar" })
 
 -------
 
