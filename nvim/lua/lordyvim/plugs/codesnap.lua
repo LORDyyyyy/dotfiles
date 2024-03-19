@@ -1,4 +1,7 @@
 local home = os.getenv("HOME")
+local getBuffferIcon = function()
+    return require('nvim-web-devicons').get_icon(vim.fn.expand("%:p")) .. " " or ""
+end
 
 require("silicon").setup({
 
@@ -8,7 +11,7 @@ require("silicon").setup({
     -- the theme to use, depends on themes available to silicon
     theme = "Dracula",
 
-    pad_horiz = 80,
+    pad_horiz = 75,
     pad_vert = 60,
 
     -- the distance between lines of code
@@ -32,7 +35,7 @@ require("silicon").setup({
     -- showing in the image, only works in silicon versions greater than v0.5.1
     -- here a function is used to get the name of the current buffer
     window_title = function()
-        return " LORDyyyyy - " .. vim.fn.fnamemodify(
+        return " LORDyyyyy - " .. getBuffferIcon() .. vim.fn.fnamemodify(
             vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()),
             ":t"
         )
@@ -44,4 +47,3 @@ require("silicon").setup({
         return home .. "/Pictures/Code/" .. os.date("!%Y-%m-%dT%H-%M-%S") .. "." .. vim.bo.filetype .. ".code.png"
     end,
 })
-

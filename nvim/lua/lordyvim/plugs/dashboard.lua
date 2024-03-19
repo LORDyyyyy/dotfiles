@@ -58,7 +58,7 @@ dashboard.custom_center = {
 	{
 		icon = '  ',
 		desc = 'Terminal                                ',
-		action = 'lua require("nvterm.terminal").toggle "float"',
+		action = ':ToggleTerm direction=float',
 		shortcut = 'SPC t t'
 	},
 	{

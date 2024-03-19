@@ -9,7 +9,7 @@ vim.opt.spellfile = home .. '/.config/nvim/spell/en.utf-8.add'
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "spectre_panel",
         "terminal",
-        "toggleterm" },
+        "toggleterm", "NeogitPopup", "NeogitStatus" },
     command = 'setlocal nospell'
 })
 
