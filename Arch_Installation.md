@@ -1,12 +1,12 @@
 # Boot from the USB
-Before starting installation, read all notes of this file first.
+Before Starting installation, read all notes of this file first.
 Good Luck!
 
 ### Connect to the internet
-##### iwctl for wifi
+##### iwctl
 ```bash
 ($) iwctl
-[iwd] device list # show available devices
+[iwd] device list # show avaliable devices
 [iwd] station _device_ scan
 [iwd] station <device> connect-hidden <ssid> # connect to a hidden wifi
 [iwd] station <device> connect <ssid> # connect to wifi
@@ -44,7 +44,7 @@ sdc           8:32   0   1.8T  0 disk
 ```
 #### Start partitioning by cfdisk 
 ```bash
-($) cfdisk /dev/sda # the name of the wanted hard drive
+($) cfdesk /dev/sda # the name of the wanted hard drive
 ```
 
 > Note: select gpt always
@@ -56,18 +56,19 @@ For the swap, it's not mandatory but if wanted, 2-8 GB will be good.
 And the rest is for the root partition.
  
 #### Mounting
+##### Identify the partition types if you didn't do it in cfdisk
 
 ```bash
-($) mkfs.ext4 /dev/sdXY # for the root partition
-($) mkfs.fat -F 32 /dev/sdXY # for the EFI partition
-# skip if you already have an EFI partition
-($) mkswap /dev/sdXY # for the swap partition
+($) mkfs.ext4 /dev/sdXY # for the root parition
+($) mkfs.fat -F 32 /dev/sdXY # for the EFI parition
+# skip if you already have an EFI parition
+($) mkswap /dev/sdXY # for the swap parition
 ```
 
 ##### Mounting the file system
 ```bash
 ($) mkdir -p /mnt
-($) mount /dev/sdXY /mnt # the root partition
+($) mount /dev/sdXY /mnt # the root parition
 ($) mkdir -p /mnt/boot
 ($) mkdir -p /mnt/boot/efi
 ($) mount /dev/sdXY /mnt/boot/efi # for the EFI partition
@@ -82,15 +83,15 @@ And the rest is for the root partition.
 ($) pacstrap /mnt base linux linux-firmware sof-firmware base-devel grub efibootmgr vim networkmanager os-prober
 ```
 
-After running the previous command, it will download the system packages and will install it, if you found a problem with PGP and you got this error  [sudo pacman -Syu fails with "error: failed to commit transaction (invalid or corrupted package)"](https://unix.stackexchange.com/questions/574493/sudo-pacman-syu-fails-with-error-failed-to-commit-transaction-invalid-or-cor),
-run the following commands:
+After running the previous command, it will download the system packages and will install it, if you found a problem with PKG you got this error  [sudo pacman -Syu fails with "error: failed to commit transaction (invalid or corrupted package)"](https://unix.stackexchange.com/questions/574493/sudo-pacman-syu-fails-with-error-failed-to-commit-transaction-invalid-or-cor),
+run the following commands: 
 ```bash
 ($) pacman -Sy archlinux-keyring
 ($) pacman -Syu
 ```
 
 #### Fstab
-This step allows us to mount the partition automatically
+This step allows us to mount the partition automatically and for ever
 ```bash
 ($) genfstab /mnt # to see the content
 ($) genfstab /mnt > /mnt/etc/fstab
@@ -136,12 +137,14 @@ This step allows us to mount the partition automatically
 ($) EDITOR=vim visudo
 # uncomment the "%wheel ALL=(ALL) ALL" line
 # you will find it in the end
-($) su my_name # switch to the user
+# if you want to use the command sudo without passowrd,
+# uncomment the next line after the previous one
+($) su my_name # swtich to the user
 ```
 
 #### Enable some services
 ```bash
-($) su # switch to root
+($) su # swtich to root
 ($) systemctl enable NetworkManager
 ```
 
@@ -155,7 +158,7 @@ This step allows us to mount the partition automatically
 ($) grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-If the second OS, like windows, does not appear
+If the second OS, like windows does not appear,
 ```bash
 ($) os-prober
 ($) vim /etc/default/grub
@@ -171,7 +174,7 @@ If grub did not detect the other OS, just reboot your system, in the following s
 #### DONE
 ```bash
 ($) umount -a # unmount everything
-($) reboot # then remove the USB
+($) reboot # then remove the USBk
 ```
 
 ### Next steps after installation
@@ -192,7 +195,7 @@ Reconnect again by
 I highly recommend KDE Plasma but you can choose any thing
 
 ```bash
-($) sudo pacman -S plasma sddm # it gonna take a long time to download and to install
+($) sudo pacman -S plasma sddm # it gonna take a long time to download and to intsll
 ```
 
 After installation, we need to install some programs before we run the DM
