@@ -2,6 +2,8 @@
 Welcome to my personal configuration files repository!
 Feel free to explore, fork, or suggest improvements.
 
+> Check the [Documentation Section](https://github.com/LORDyyyyy/dotfiles/tree/main/doc) for Config doc and keymaps
+
 ## Contributing
 If you have suggestions, improvements, or new configuration files to add, please feel free to contribute!
 
