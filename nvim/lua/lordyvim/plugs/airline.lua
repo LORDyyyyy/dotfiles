@@ -3,7 +3,7 @@ local devicon = require('nvim-web-devicons')
 -- Airline
 vim.g.airline_powerline_fonts = 1
 
-vim.g.airline_section_a = vim.fn["airline#section#create"]({ 'mode', 'crypt', 'paste', 'iminsert' })
+vim.g.airline_section_a = vim.fn["airline#section#create"]({ 'mode', '  ', 'crypt', 'paste', 'iminsert' })
 vim.g.airline_section_y = '%{""}'
 vim.g.airline_section_z = "%{line('.')}/%{line('$')} Col %c"
 

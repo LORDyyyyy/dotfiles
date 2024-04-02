@@ -6,5 +6,5 @@ require("nvim-web-devicons").set_icon {
     bashrc = {
         icon = "",
         name = ".bashrc"
-    }
+    },
 }
