@@ -78,12 +78,8 @@ lspconfig.clangd.setup {
 lspconfig.intelephense.setup {
     on_attach = on_attach,
     filetypes = { "php", "blade.php" },
-    -- root_dir = util.root_pattern("composer.json", ".git"),
-    root_dir = function(fname)
-        return util.root_pattern(
-            "composer.json", ".git"
-        )(fname) or vim.fn.getcwd()
-    end,
+    single_file_support = true,
+    root_dir = util.root_pattern("composer.json", ".git"),
     cmd = { "/usr/bin/intelephense", "--stdio" }
 }
 

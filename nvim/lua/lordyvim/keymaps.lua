@@ -13,6 +13,7 @@ vim.cmd('command! -nargs=0 -bar Wq wq')
 vim.cmd('command! -nargs=0 -bar WQ wq')
 
 vim.keymap.set('n', '<Tab>', 'a', { desc = "Map a to Tab" })
+vim.keymap.set('v', '<Tab>', '<Esc>a', { desc = "Map a to Tab" })
 
 -- Unmap 's' so I can use it with "Neotree float" command freely
 vim.keymap.set('n', 's', '', { desc = "Unmap s" })
