@@ -288,7 +288,8 @@ vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> 
 vim.keymap.set('n', '<leader>cpop', ':Copilot panel<CR>', { desc = "Copilot -> Panel"})
 vim.keymap.set('n', '<leader>cpos', ':Copilot status<CR>', { desc = "Copilot -> Status"})
 
-vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = "Copilot -> Answer accept" })
+vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = "Copilot -> Answer accept",
+            replace_keycodes = false, noremap = true })
 vim.keymap.set("i", "<C-]>", 'copilot#Dismiss()', { silent = true, expr = true, desc = "Copilot -> Answer dismiss" })
 
 --------

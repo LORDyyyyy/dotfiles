@@ -17,6 +17,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
+vim.wo.wrap = false
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 

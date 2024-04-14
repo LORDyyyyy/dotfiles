@@ -356,3 +356,4 @@ scrollBy
 scrollTo
 BOM
 localStorage
+SessionException
