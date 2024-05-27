@@ -256,10 +256,17 @@ return require('packer').startup(function(use)
     use 'petertriho/nvim-scrollbar'
 
 
+    -- leetcode.nvim
     use {
         "kawre/leetcode.nvim",
         requires = {
             "MunifTanjim/nui.nvim",
         }
+    }
+
+
+    use {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
     }
 end)

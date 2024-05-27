@@ -288,9 +288,40 @@ vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> 
 vim.keymap.set('n', '<leader>cpop', ':Copilot panel<CR>', { desc = "Copilot -> Panel"})
 vim.keymap.set('n', '<leader>cpos', ':Copilot status<CR>', { desc = "Copilot -> Status"})
 
-vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = "Copilot -> Answer accept",
-            replace_keycodes = false, noremap = true })
+vim.keymap.set("i", "<C-j>", 'copilot#Accept("<CR>")', {
+            silent = true, expr = true,
+            replace_keycodes = false,
+            noremap = true,
+            desc = "Copilot -> Answer accept" })
 vim.keymap.set("i", "<C-]>", 'copilot#Dismiss()', { silent = true, expr = true, desc = "Copilot -> Answer dismiss" })
+
+-- copilot chat
+vim.keymap.set('n', "<leader>ccc", ":CopilotChat<CR>", { desc = "CopilotChat -> Open chat menu" })
+vim.keymap.set('n', "<leader>cch",
+    function()
+          local actions = require("CopilotChat.actions")
+          require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+    end,
+    { desc = "CopilotChat -> Help actions" }
+)
+
+vim.keymap.set('n', "<leader>ccp",
+    function()
+      local actions = require("CopilotChat.actions")
+      require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+    end,
+    { desc = "CopilotChat -> Prompt actions" }
+)
+
+vim.keymap.set('n', "<leader>ccq",
+     function()
+      local input = vim.fn.input("Quick Chat: ")
+      if input ~= "" then
+        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+      end
+    end,
+    { desc = "CopilotChat -> Quick chat" }
+)
 
 --------
 
