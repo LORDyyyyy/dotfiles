@@ -80,3 +80,17 @@ alias ll='ls -Fls' # long listing format
 alias labc='ls -lap' #alphabetical sort
 alias lf="ls -l | egrep -v '^d'" # files only
 alias ldir="ls -l | egrep '^d'" # directories only
+
+
+# Bash History configuration
+source <(fzf --bash)
+export HISTCONTROL=ignoredups # ignore duplicates
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+unset HISTTIMEFORMAT
+if [ -n "$PROMPT_COMMAND" ]; then
+    export PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
+else
+    export PROMPT_COMMAND="history -a"
+fi
+shopt -s histappend
