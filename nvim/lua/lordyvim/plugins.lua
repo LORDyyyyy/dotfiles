@@ -254,4 +254,12 @@ return require('packer').startup(function(use)
 
     -- scrollbar
     use 'petertriho/nvim-scrollbar'
+
+
+    use {
+        "kawre/leetcode.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+        }
+    }
 end)

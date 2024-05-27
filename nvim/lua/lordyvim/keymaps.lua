@@ -329,4 +329,8 @@ vim.keymap.set('n', '<leader>rshd', ':RemoteSSHFSDisconnect<CR>', { desc = "Remo
 
 ------
 
+-- Leetcode
+
+vim.keymap.set('n', '<leader>le', ':Leet ', { desc = "Leetcode -> write the ':Leet' command" });
+
 -- [[ END ]] --
