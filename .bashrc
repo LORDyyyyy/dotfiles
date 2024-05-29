@@ -88,9 +88,4 @@ export HISTCONTROL=ignoredups # ignore duplicates
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 unset HISTTIMEFORMAT
-if [ -n "$PROMPT_COMMAND" ]; then
-    export PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
-else
-    export PROMPT_COMMAND="history -a"
-fi
 shopt -s histappend

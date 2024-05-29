@@ -2,6 +2,9 @@
 --
 local home = os.getenv("HOME")
 
+-- see lordyvim/plugs/utils.lua/PSFileInit()
+vim.api.nvim_command('command! PSFileInit lua PSFileInit()')
+
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.spellfile = home .. '/.config/nvim/spell/en.utf-8.add'
