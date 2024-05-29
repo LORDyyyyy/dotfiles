@@ -269,4 +269,6 @@ return require('packer').startup(function(use)
         "CopilotC-Nvim/CopilotChat.nvim",
         branch = "canary",
     }
+
+    use "almo7aya/openingh.nvim"
 end)

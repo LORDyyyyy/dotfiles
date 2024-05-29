@@ -334,6 +334,18 @@ vim.keymap.set('n', '<leader>gtm', ':Gitsigns<CR>', { desc = "Git -> Menu" })
 vim.keymap.set('n', '<leader>gtp', ':Gitsigns preview_hunk<CR>', { desc = "Git -> Preview Hunk" })
 vim.keymap.set('n', '<leader>gtb', ':Gitsigns toggle_current_line_blame<CR>', { desc = "Git -> Toggle current line Blame" })
 
+---------
+
+-- openingh
+
+--- for repository page
+vim.keymap.set('n', '<leader>gtr', ':OpenInGHRepo <CR>', { silent = true, noremap = true, desc = "Git -> Open repository in browser" })
+-- for current file page
+vim.keymap.set('n', '<leader>gtf', ':OpenInGHFile <CR>', { silent = true, noremap = true,
+    desc = "Git -> Open current file of the repo in the browser" })
+vim.keymap.set('v', '<leader>gtf', ':OpenInGHFileLines <CR>', { silent = true, noremap = true,
+    desc = "Git -> Open current file of the repo in the browser with selected lines" })
+
 ------
 
 -- vim-illuminate, detect same words
