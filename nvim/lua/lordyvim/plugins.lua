@@ -264,11 +264,15 @@ return require('packer').startup(function(use)
         }
     }
 
-
+    -- copilot chat
     use {
         "CopilotC-Nvim/CopilotChat.nvim",
         branch = "canary",
     }
 
-    use "almo7aya/openingh.nvim"
+    -- open in github
+    use 'almo7aya/openingh.nvim'
+
+    -- latex live preview
+    use 'xuhdev/vim-latex-live-preview'
 end)

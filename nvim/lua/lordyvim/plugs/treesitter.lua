@@ -6,7 +6,7 @@ require 'nvim-treesitter.configs'.setup {
         "html", "ruby", "bash",
         "cpp", "go", "json",
         "php", "puppet", "regex",
-        "sql", "php"
+        "sql", "php", "latex"
     },
 
     sync_install = true,

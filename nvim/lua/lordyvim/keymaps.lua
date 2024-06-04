@@ -191,7 +191,7 @@ vim.keymap.set('n', '<C-j><C-j>', ':JSONFormatter<CR>', { desc = "JSON Formatter
 -------
 
 -- Trouble Toggle
-vim.keymap.set('n', '<leader>e', ':TroubleToggle<CR>', { silent = true, desc = "Toggle TroubleToggle"  })
+vim.keymap.set('n', '<leader>e', ':Trouble diagnostics toggle<CR>', { silent = true, desc = "Toggle TroubleToggle"  })
 
 -------
 
@@ -279,7 +279,7 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close A
 
 -- copilot
 
-vim.g.copilot_no_tab_map = true -- disable the <Tab> keymap 
+vim.g.copilot_no_tab_map = true -- disable the <Tab> keymap
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_enabled = false -- disable auto start
 
