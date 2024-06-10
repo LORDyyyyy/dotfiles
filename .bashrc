@@ -1,6 +1,14 @@
 eval "$(oh-my-posh init bash --config /home/lordy/.config/bash_themes/kali.omp.json)"
 
 
+# Enable bash programmable completion features in interactive shells
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
+
 export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts/"
 
 export BROWSER="/usr/bin/thorium-browser"
@@ -50,10 +58,28 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-
 # Edit this .bashrc file
 alias ebrc='sudo nvim ~/.bashrc'
 
+# cd into the old directory
+alias bd='cd "$OLDPWD"'
+
+# Remove a directory and all files
+alias rmd='/bin/rm  --recursive --force --verbose '
+
+# Search running processes
+alias p="ps aux | grep "
+# Search running port
+alias lort='sudo lsof -i -P -n | grep '
+
+
+# Alias's for safe and forced reboots
+alias rebootsafe='sudo shutdown -r now'
+alias rebootforce='sudo shutdown -r -n now'
+
+
+# click on a text in the terminal, and then auto paste it
+alias clickpaste='sleep 3; xdotool type "$(xclip -o -selection clipboard)"'
 
 # Color for manpages in less makes manpages a little easier to read
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -84,8 +110,83 @@ alias ldir="ls -l | egrep '^d'" # directories only
 
 # Bash History configuration
 source <(fzf --bash)
-export HISTCONTROL=ignoredups # ignore duplicates
+export HISTCONTROL=erasedups:ignoredups:ignorespace
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 unset HISTTIMEFORMAT
 shopt -s histappend
+
+
+# Functions section
+
+# Go to a specified language test folder
+lang () {
+    if [ $1 = "list" -o $1 = "l" ]
+    then
+        ls ~/Test/langs/
+    else
+        cd ~/Test/langs/$1
+    fi
+}
+
+# Extracts any archive(s) (if unp isn't installed)
+extract() {
+	for archive in "$@"; do
+		if [ -f "$archive" ]; then
+			case $archive in
+			*.tar.bz2) tar xvjf $archive ;;
+			*.tar.gz) tar xvzf $archive ;;
+			*.bz2) bunzip2 $archive ;;
+			*.rar) rar x $archive ;;
+			*.gz) gunzip $archive ;;
+			*.tar) tar xvf $archive ;;
+			*.tbz2) tar xvjf $archive ;;
+			*.tgz) tar xvzf $archive ;;
+			*.zip) unzip $archive ;;
+			*.Z) uncompress $archive ;;
+			*.7z) 7z x $archive ;;
+			*) echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+# Copy and go to the directory
+cpg() {
+	if [ -d "$2" ]; then
+		cp "$1" "$2" && cd "$2"
+	else
+		cp "$1" "$2"
+	fi
+}
+
+# Move and go to the directory
+mvg() {
+	if [ -d "$2" ]; then
+		mv "$1" "$2" && cd "$2"
+	else
+		mv "$1" "$2"
+	fi
+}
+
+# Create and go to the directory
+mkdirg() {
+	mkdir -p "$1"
+	cd "$1"
+}
+
+# Goes up a specified number of directories  (i.e. up 4)
+up() {
+	local d=""
+	limit=$1
+	for ((i = 1; i <= limit; i++)); do
+		d=$d/..
+	done
+	d=$(echo $d | sed 's/^\///')
+	if [ -z "$d" ]; then
+		d=..
+	fi
+	cd $d
+}
