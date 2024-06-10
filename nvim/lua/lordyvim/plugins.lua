@@ -226,18 +226,27 @@ return require('packer').startup(function(use)
     use 'michaelrommel/nvim-silicon'
 
     -- barbecue winbar
+    -- use({
+    --     "utilyre/barbecue.nvim",
+    --     tag = "*",
+    --     requires = {
+    --         "SmiteshP/nvim-navic",
+    --         "nvim-tree/nvim-web-devicons",
+    --     },
+    --     after = "nvim-web-devicons",
+    --     config = function()
+    --         require("barbecue").setup()
+    --     end
+    -- })
+
     use({
-        "utilyre/barbecue.nvim",
-        tag = "*",
+        'Bekaboo/dropbar.nvim',
         requires = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons",
-        },
-        after = "nvim-web-devicons",
-        config = function()
-            require("barbecue").setup()
-        end
+            'nvim-telescope/telescope-fzf-native.nvim'
+        }
     })
+
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- nvim-notify - Notifications UI
     use 'rcarriga/nvim-notify'

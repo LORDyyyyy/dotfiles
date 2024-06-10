@@ -10,9 +10,13 @@ vim.opt.spelllang = "en_us"
 vim.opt.spellfile = home .. '/.config/nvim/spell/en.utf-8.add'
 -- Cancel spell check on a specific file type
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "spectre_panel",
-        "terminal",
-        "toggleterm", "NeogitPopup", "NeogitStatus" },
+    pattern = {
+        'spectre_panel',
+        'terminal',
+        'toggleterm',
+        'NeogitPopup',
+        'NeogitStatus'
+    },
     command = 'setlocal nospell'
 })
 
@@ -21,6 +25,11 @@ vim.opt.background = 'dark'
 vim.opt.termguicolors = true
 
 vim.wo.wrap = false
+
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
+
+vim.opt.scrolloff = 6
 
 vim.opt.number = true
 vim.opt.relativenumber = true

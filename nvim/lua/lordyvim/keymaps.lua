@@ -376,4 +376,11 @@ vim.keymap.set('n', '<leader>rshd', ':RemoteSSHFSDisconnect<CR>', { desc = "Remo
 
 vim.keymap.set('n', '<leader>le', ':Leet ', { desc = "Leetcode -> write the ':Leet' command" });
 
+----
+
+-- dropbar
+
+vim.keymap.set('n', '<C-q>', ':lua require("dropbar.api").pick()<CR>', { silent = true, desc = "Dropbar -> Pick from the dropbar menu" });
+vim.keymap.set('i', '<C-q>', '<ESC>:lua require("dropbar.api").pick()<CR>', { silent = true, desc = "Dropbar -> Pick from the dropbar menu" });
+
 -- [[ END ]] --

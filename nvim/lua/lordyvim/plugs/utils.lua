@@ -41,5 +41,5 @@ end
 return {
     CopyFileDirectory = CopyFileDirectory,
     CopyTrimmedLine = CopyTrimmedLine,
-    ReadAndPasteFile = ReadAndPasteFile
+    ReadAndPasteFile = PSFileInit
 }

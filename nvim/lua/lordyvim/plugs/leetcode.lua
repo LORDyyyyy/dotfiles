@@ -1,5 +1,4 @@
 require('leetcode').setup({
-    ---@type lc.lang
     lang = "typescript",
 
     cache = {
