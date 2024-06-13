@@ -43,15 +43,19 @@ vim.keymap.set('n', '<leader>-d0', ':windo diffoff<CR>', { desc = "Diff -> Close
 -- Change tab width temporarily
 vim.keymap.set('n', '<leader>ctw', ':set shiftwidth=', { desc = "Change tab width temporarily" })
 
+-- A function to open the browser and search in Google for the selected text
+vim.keymap.set('v', '<Leader>sg', ':lua require("lordyvim.plugs.utils").SearchGoogle()<CR>', { noremap = true,
+    desc = "Google search for the selected text" })
+
 -------------------------------
 --[[ Selection Key Mapping ]]
 --
 -- C = Cursor
 ---- Selection keymaps
-vim.keymap.set('n', '<S-End>', 'v$', { desc = "Select from cursor to end of line" })                  -- From C to End of Line
+vim.keymap.set('n', '<S-End>', 'v$', { desc = "Select from cursor to end of line" })                    -- From C to End of Line
 vim.keymap.set('n', '<S-Home>', 'v0', { desc = "Select from cursor to start of line" })                 -- From C Start of Line
 vim.keymap.set('n', '<S-C-Home>', ':normal vgg0<CR>', { desc = "Select form cursor to Start of file" }) -- From C to Start of File
-vim.keymap.set('n', '<S-C-End>', ':normal vG$<CR>', { desc = "Select from cursor to EOF" })   -- From C to EOF
+vim.keymap.set('n', '<S-C-End>', ':normal vG$<CR>', { desc = "Select from cursor to EOF" })             -- From C to EOF
 
 -- Select all
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = "Select All" })
@@ -278,10 +282,6 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, { desc = "UFO -> Close A
 -------
 
 -- copilot
-
-vim.g.copilot_no_tab_map = true -- disable the <Tab> keymap
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_enabled = false -- disable auto start
 
 vim.keymap.set('n', '<leader>cpod', ':Copilot disable<CR>', { desc = "Copilot -> Disable"})
 vim.keymap.set('n', '<leader>cpoe', ':Copilot enable<CR>', { desc = "Copilot -> Enable"})
