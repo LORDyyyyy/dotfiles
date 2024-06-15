@@ -383,4 +383,13 @@ vim.keymap.set('n', '<leader>le', ':Leet ', { desc = "Leetcode -> write the ':Le
 vim.keymap.set('n', '<C-q>', ':lua require("dropbar.api").pick()<CR>', { silent = true, desc = "Dropbar -> Pick from the dropbar menu" });
 vim.keymap.set('i', '<C-q>', '<ESC>:lua require("dropbar.api").pick()<CR>', { silent = true, desc = "Dropbar -> Pick from the dropbar menu" });
 
+
+------
+
+-- oil.nvim
+
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = "Open parent directory" })
+
+------
+
 -- [[ END ]] --

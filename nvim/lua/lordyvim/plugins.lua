@@ -225,20 +225,7 @@ return require('packer').startup(function(use)
     -- nvim-silicon, snapshots for your code
     use 'michaelrommel/nvim-silicon'
 
-    -- barbecue winbar
-    -- use({
-    --     "utilyre/barbecue.nvim",
-    --     tag = "*",
-    --     requires = {
-    --         "SmiteshP/nvim-navic",
-    --         "nvim-tree/nvim-web-devicons",
-    --     },
-    --     after = "nvim-web-devicons",
-    --     config = function()
-    --         require("barbecue").setup()
-    --     end
-    -- })
-
+    -- top dropbar
     use({
         'Bekaboo/dropbar.nvim',
         requires = {
@@ -284,4 +271,7 @@ return require('packer').startup(function(use)
 
     -- latex live preview
     use 'xuhdev/vim-latex-live-preview'
+
+    -- oil.nvim - file navigator
+    use 'stevearc/oil.nvim'
 end)
