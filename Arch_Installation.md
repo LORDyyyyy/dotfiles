@@ -15,6 +15,7 @@ Good Luck!
 ($) ping 8.8.8.8 # make sure that the internet is working
 ```
 #### [SSH](https://wiki.archlinux.org/title/Install_Arch_Linux_via_SSH)
+For remote installation on another device
 ###### On the remote (target) machine
 ```bash
 ($) passwd # make a password
@@ -31,18 +32,18 @@ Good Luck!
 ```bash
 ($) lsblk
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-sda           8:0    0 223.6G  0 disk 
-├─sda1        8:1    0   529M  0 part 
-├─sda2        8:2    0   100M  0 part 
-├─sda3        8:3    0    16M  0 part 
-├─sda4        8:4    0 222.4G  0 part 
-└─sda5        8:5    0   515M  0 part 
-sdb           8:16   0 465.8G  0 disk 
+sda           8:0    0 223.6G  0 disk
+├─sda1        8:1    0   529M  0 part
+├─sda2        8:2    0   100M  0 part
+├─sda3        8:3    0    16M  0 part
+├─sda4        8:4    0 222.4G  0 part
+└─sda5        8:5    0   515M  0 part
+sdb           8:16   0 465.8G  0 disk
 └─sdb1        8:17   0 465.8G  0 part
-sdc           8:32   0   1.8T  0 disk 
+sdc           8:32   0   1.8T  0 disk
 └─sdc1        8:33   0   1.8T  0 part
 ```
-#### Start partitioning by cfdisk 
+#### Start partitioning by cfdisk
 ```bash
 ($) cfdesk /dev/sda # the name of the wanted hard drive
 ```
@@ -51,28 +52,30 @@ sdc           8:32   0   1.8T  0 disk
 
 In the cfdisk menu
 For the EFI partition, 512 MB is enough.
-** If you want to install the boot loader on the Windows EFI partition, don't make an EFI partition, just mount the existed EFI partition.**
+
+**If you want to install the boot loader on the Windows EFI partition, don't make an EFI partition, just mount the existed EFI partition.**
+
 For the swap, it's not mandatory but if wanted, 2-8 GB will be good.
 And the rest is for the root partition.
- 
+
 #### Mounting
 ##### Identify the partition types if you didn't do it in cfdisk
 
 ```bash
-($) mkfs.ext4 /dev/sdXY # for the root parition
-($) mkfs.fat -F 32 /dev/sdXY # for the EFI parition
+($) mkfs.ext4 /dev/sdXY1 # for the root parition
+($) mkfs.fat -F 32 /dev/sdXY2 # for the EFI parition
 # skip if you already have an EFI parition
-($) mkswap /dev/sdXY # for the swap parition
+($) mkswap /dev/sdXY3 # for the swap parition
 ```
 
 ##### Mounting the file system
 ```bash
 ($) mkdir -p /mnt
-($) mount /dev/sdXY /mnt # the root parition
+($) mount /dev/sdXY1 /mnt # the root parition
 ($) mkdir -p /mnt/boot
 ($) mkdir -p /mnt/boot/efi
-($) mount /dev/sdXY /mnt/boot/efi # for the EFI partition
-($) swapon /dev/sdXY # turn on the swap partition
+($) mount /dev/sdXY2 /mnt/boot/efi # for the EFI partition
+($) swapon /dev/sdXY3 # turn on the swap partition
 ```
 
 > Note: run lsblk after every step to make sure everything is ok.
@@ -84,7 +87,7 @@ And the rest is for the root partition.
 ```
 
 After running the previous command, it will download the system packages and will install it, if you found a problem with PKG you got this error  [sudo pacman -Syu fails with "error: failed to commit transaction (invalid or corrupted package)"](https://unix.stackexchange.com/questions/574493/sudo-pacman-syu-fails-with-error-failed-to-commit-transaction-invalid-or-cor),
-run the following commands: 
+run the following commands:
 ```bash
 ($) pacman -Sy archlinux-keyring
 ($) pacman -Syu
@@ -108,7 +111,7 @@ This step allows us to mount the partition automatically and for ever
 ```bash
 ($) ln -sf /usr/share/zoneinfo/Africa/Cairo /etc/localtime
 ($) date # make sure the time and date is right
-($) hwclock --sysohc
+($) hwclock --systohc
 ```
 
 #### Localization
@@ -151,7 +154,7 @@ This step allows us to mount the partition automatically and for ever
 #### GRUB
 
 ```bash
-# install GRUB 
+# install GRUB
 ($) grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 
 # Generate/Update GRUB config
