@@ -28,8 +28,6 @@ require("luasnip.loaders.from_vscode").lazy_load(
         paths = { home .. '/.config/nvim/lua/lordyvim/snippets' }
     }
 )
-require('luasnip').filetype_extend("php", { "html" })
-require('luasnip').filetype_extend("ejs", { "html" })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -52,6 +50,10 @@ cmp.setup({
 
         -- Show completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
+
+        -- Navigate in auto-completion menu
+        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 
         -- Navigate between snippet placeholder
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -87,6 +89,8 @@ lspconfig.intelephense.setup {
     cmd = { "/usr/bin/intelephense", "--stdio" }
 }
 
+require('luasnip').filetype_extend("php", { "html" })
+require('luasnip').filetype_extend("ejs", { "html" })
 lspconfig.html.setup {
     filetypes = { "html", "templ", "php", "ejs" },
     init_options = {

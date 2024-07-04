@@ -3,7 +3,7 @@ local getBuffferIcon = function()
     return require('nvim-web-devicons').get_icon(vim.fn.expand("%:p")) .. " " or ""
 end
 
-require("silicon").setup({
+require("nvim-silicon").setup({
 
     -- the font settings with size and fallback font
     font = "RobotoMono Nerd Font =22;Noto Color Emoji",
