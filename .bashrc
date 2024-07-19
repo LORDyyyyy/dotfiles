@@ -1,6 +1,5 @@
 eval "$(oh-my-posh init bash --config /home/lordy/.config/bash_themes/kali.omp.json)"
 
-
 # Enable bash programmable completion features in interactive shells
 if [ -f /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
@@ -8,14 +7,15 @@ elif [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
-
-export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts/"
+export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts:/home/lordy/.dotnet/tools"
 
 export BROWSER="/usr/bin/thorium-browser"
 export CLICOLOR=1
 export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:'
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+
+alias copyl='fc -ln -1 | xclip -selection clipboard'
 
 
 alias ls="ls --color=auto"
@@ -25,6 +25,7 @@ alias where="which"
 alias CLEAR="clear"
 alias copy='xsel --clipboard'
 alias json_format='python -m json.tool'
+
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -72,6 +73,7 @@ alias p="ps aux | grep "
 # Search running port
 alias lort='sudo lsof -i -P -n | grep '
 
+alias sys-list-units="systemctl list-units --type=service | fzf | awk '{print $1}' | xargs -I {} systemctl status {}"
 
 # Alias's for safe and forced reboots
 alias rebootsafe='sudo shutdown -r now'
@@ -190,3 +192,11 @@ up() {
 	fi
 	cd $d
 }
+
+# Copy prompt input
+if [[ -n $DISPLAY ]]; then
+  copy_line_to_x_clipboard () {
+    printf %s "$READLINE_LINE" | xclip -selection CLIPBOARD
+  }
+  bind -x '"\C-y": copy_line_to_x_clipboard' # binded to ctrl-y
+fi

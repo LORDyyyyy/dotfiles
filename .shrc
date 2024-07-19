@@ -1,13 +1,14 @@
 PS1='\[\033[0;32m\]lordy\[\033[0m\]# '
 
-
-export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts/"
+export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts:/home/lordy/.dotnet/tools"
 
 export BROWSER="/usr/bin/thorium-browser"
 export CLICOLOR=1
 export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:'
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+
+alias copyl='fc -ln -1 | xclip -selection clipboard'
 
 
 alias ls="ls --color=auto"
@@ -17,6 +18,7 @@ alias where="which"
 alias CLEAR="clear"
 alias copy='xsel --clipboard'
 alias json_format='python -m json.tool'
+
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -50,10 +52,29 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
+# Edit this .bashrc file
+alias ebrc='sudo nvim ~/.bashrc'
 
-# Edit this .shrc file
-alias esrc='sudo nvim ~/.shrc'
+# cd into the old directory
+alias bd='cd "$OLDPWD"'
 
+# Remove a directory and all files
+alias rmd='/bin/rm  --recursive --force --verbose '
+
+# Search running processes
+alias p="ps aux | grep "
+# Search running port
+alias lort='sudo lsof -i -P -n | grep '
+
+alias sys-list-units="systemctl list-units --type=service | fzf | awk '{print $1}' | xargs -I {} systemctl status {}"
+
+# Alias's for safe and forced reboots
+alias rebootsafe='sudo shutdown -r now'
+alias rebootforce='sudo shutdown -r -n now'
+
+
+# click on a text in the terminal, and then auto paste it
+alias clickpaste='sleep 3; xdotool type "$(xclip -o -selection clipboard)"'
 
 # Color for manpages in less makes manpages a little easier to read
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -80,3 +101,95 @@ alias ll='ls -Fls' # long listing format
 alias labc='ls -lap' #alphabetical sort
 alias lf="ls -l | egrep -v '^d'" # files only
 alias ldir="ls -l | egrep '^d'" # directories only
+
+
+# Bash History configuration
+source <(fzf --bash)
+export HISTCONTROL=erasedups:ignoredups:ignorespace
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+unset HISTTIMEFORMAT
+shopt -s histappend
+
+
+# Functions section
+
+# Go to a specified language test folder
+lang () {
+    if [ $1 = "list" -o $1 = "l" ]
+    then
+        ls ~/Test/langs/
+    else
+        cd ~/Test/langs/$1
+    fi
+}
+
+# Extracts any archive(s) (if unp isn't installed)
+extract() {
+	for archive in "$@"; do
+		if [ -f "$archive" ]; then
+			case $archive in
+			*.tar.bz2) tar xvjf $archive ;;
+			*.tar.gz) tar xvzf $archive ;;
+			*.bz2) bunzip2 $archive ;;
+			*.rar) rar x $archive ;;
+			*.gz) gunzip $archive ;;
+			*.tar) tar xvf $archive ;;
+			*.tbz2) tar xvjf $archive ;;
+			*.tgz) tar xvzf $archive ;;
+			*.zip) unzip $archive ;;
+			*.Z) uncompress $archive ;;
+			*.7z) 7z x $archive ;;
+			*) echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+# Copy and go to the directory
+cpg() {
+	if [ -d "$2" ]; then
+		cp "$1" "$2" && cd "$2"
+	else
+		cp "$1" "$2"
+	fi
+}
+
+# Move and go to the directory
+mvg() {
+	if [ -d "$2" ]; then
+		mv "$1" "$2" && cd "$2"
+	else
+		mv "$1" "$2"
+	fi
+}
+
+# Create and go to the directory
+mkdirg() {
+	mkdir -p "$1"
+	cd "$1"
+}
+
+# Goes up a specified number of directories  (i.e. up 4)
+up() {
+	local d=""
+	limit=$1
+	for ((i = 1; i <= limit; i++)); do
+		d=$d/..
+	done
+	d=$(echo $d | sed 's/^\///')
+	if [ -z "$d" ]; then
+		d=..
+	fi
+	cd $d
+}
+
+# Copy prompt input
+if [[ -n $DISPLAY ]]; then
+  copy_line_to_x_clipboard () {
+    printf %s "$READLINE_LINE" | xclip -selection CLIPBOARD
+  }
+  bind -x '"\C-y": copy_line_to_x_clipboard' # binded to ctrl-y
+fi
