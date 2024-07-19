@@ -3,33 +3,31 @@ PS1='\[\033[0;32m\]lordy\[\033[0m\]# '
 export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts:/home/lordy/.dotnet/tools"
 
 export BROWSER="/usr/bin/thorium-browser"
+
 export CLICOLOR=1
 export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:'
+
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
-alias copyl='fc -ln -1 | xclip -selection clipboard'
-
-
-alias ls="ls --color=auto"
-alias l="ls --color=auto"
 alias :q="exit"
 alias where="which"
 alias CLEAR="clear"
-alias copy='xsel --clipboard'
+alias copy='xsel --clipboard' # copy output
 alias json_format='python -m json.tool'
+alias copyl='fc -ln -1 | xclip -selection clipboard' # copy last command
 
+# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
+shopt -s checkwinsize
 
 # Alias's to modified commands
 alias cp='cp -i'
 alias mv='mv -i'
 
-
 # Set the default editor
 export EDITOR=nvim
 export VISUAL=nvim
 alias vim='nvim'
-
 
 # Change directory aliases
 alias gd="cd ~/G-Drive"
@@ -43,7 +41,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-
 # Alias's for archives
 alias mktar='tar -cvf'
 alias mkbz2='tar -cvjf'
@@ -52,8 +49,10 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-# Edit this .bashrc file
-alias ebrc='sudo nvim ~/.bashrc'
+# Edit this .shrc file
+alias esrc='sudo nvim ~/.shrc'
+# Source this .shrc file
+alias srcsrc='source ~/.shrc'
 
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
@@ -65,13 +64,12 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 alias p="ps aux | grep "
 # Search running port
 alias lort='sudo lsof -i -P -n | grep '
-
+# List services
 alias sys-list-units="systemctl list-units --type=service | fzf | awk '{print $1}' | xargs -I {} systemctl status {}"
 
 # Alias's for safe and forced reboots
 alias rebootsafe='sudo shutdown -r now'
 alias rebootforce='sudo shutdown -r -n now'
-
 
 # click on a text in the terminal, and then auto paste it
 alias clickpaste='sleep 3; xdotool type "$(xclip -o -selection clipboard)"'
@@ -85,8 +83,8 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-
 # Alias's for multiple directory listing commands
+alias l="ls --color=always"
 alias la='ls -a' # show hidden files
 alias ls='ls --color=always' # add colors
 alias lx='ls -lXBh' # sort by extension
