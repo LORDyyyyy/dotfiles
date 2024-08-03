@@ -24,6 +24,9 @@ alias copy='xsel --clipboard' # copy output
 alias json_format='python -m json.tool'
 alias copyl='fc -ln -1 | xclip -selection clipboard' # copy last command
 
+# git checkout branches with fzf
+alias gbranch='git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout'
+
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize
 
@@ -70,7 +73,7 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 # Search running processes
 alias p="ps aux | grep "
 # Search running port
-alias lort='sudo lsof -i -P -n | grep '
+alias lport='sudo lsof -i -P -n | grep '
 # List services
 alias sys-list-units="systemctl list-units --type=service | fzf | awk '{print $1}' | xargs -I {} systemctl status {}"
 
@@ -107,9 +110,12 @@ alias labc='ls -lap' #alphabetical sort
 alias lf="ls -l | egrep -v '^d'" # files only
 alias ldir="ls -l | egrep '^d'" # directories only
 
+# Bash x fzf
+source <(fzf --bash)
+# Bash x fzf x git (https://github.com/junegunn/fzf-git.sh)
+source ~/fzf-git.sh
 
 # Bash History configuration
-source <(fzf --bash)
 export HISTCONTROL=erasedups:ignoredups:ignorespace
 export HISTSIZE=10000
 export HISTFILESIZE=10000
