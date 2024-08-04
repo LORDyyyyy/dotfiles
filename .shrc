@@ -66,7 +66,7 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 # Search running processes
 alias p="ps aux | grep "
 # Search running port
-alias lort='sudo lsof -i -P -n | grep '
+alias lport='sudo lsof -i -P -n | grep '
 # List services
 alias sys-list-units="systemctl list-units --type=service | fzf | awk '{print $1}' | xargs -I {} systemctl status {}"
 
@@ -107,7 +107,9 @@ alias ldir="ls -l | egrep '^d'" # directories only
 # Bash x fzf
 source <(fzf --bash)
 # Bash x fzf x git (https://github.com/junegunn/fzf-git.sh)
-source ~/fzf-git.sh
+if [[ $- == *i* ]]; then
+    source ~/fzf-git.sh
+fi
 
 # Bash History configuration
 export HISTCONTROL=erasedups:ignoredups:ignorespace

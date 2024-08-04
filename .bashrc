@@ -113,7 +113,9 @@ alias ldir="ls -l | egrep '^d'" # directories only
 # Bash x fzf
 source <(fzf --bash)
 # Bash x fzf x git (https://github.com/junegunn/fzf-git.sh)
-source ~/fzf-git.sh
+if [[ $- == *i* ]]; then
+    source ~/fzf-git.sh
+fi
 
 # Bash History configuration
 export HISTCONTROL=erasedups:ignoredups:ignorespace
