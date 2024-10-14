@@ -87,5 +87,10 @@
       "type": "prompt"
     }
   ],
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "#e1d",
+    "template": "-> "
+  },
   "version": 2
 }
