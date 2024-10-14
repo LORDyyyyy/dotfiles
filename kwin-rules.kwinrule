@@ -1,0 +1,17 @@
+[Application settings for konsole]
+Description=Application settings for konsole
+clientmachine=localhost
+maximizehoriz=true
+maximizehorizrule=3
+maximizevert=true
+maximizevertrule=3
+noborder=true
+noborderrule=3
+wmclass=konsole
+wmclassmatch=1
+
+[Fix windows starting on wrong screen]
+Description=Fix windows starting on wrong screen
+ignoregeometry=true
+ignoregeometryrule=3
+types=1
