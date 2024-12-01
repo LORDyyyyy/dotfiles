@@ -5,12 +5,12 @@
 link=$(git remote -v | grep origin | grep -o 'git@github.com:[^[:space:]]*' | head -1 | sed 's|^git@github.com:|https://github.com/|')
 
 if [ -n "$link" ]; then
-    tmux new-session -d "thorium-browser $link"
+    tmux new-session -d "$BROWSER $link"
     exit 0
 fi
 link=$(git remote -v | grep -oP '(?<=origin\s)(https?://\S+)' | head -n 1)
 if [ -n "$link" ]; then
-    tmux new-session -d "thorium-browser $link"
+    tmux new-session -d "$BROWSER $link"
     exit 0
 fi
 
