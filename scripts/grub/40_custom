@@ -9,7 +9,7 @@ exec tail -n +3 $0
 
 menuentry "Go To Sleep" {
     echo "Powering off..."
-    shutdown -h now
+    halt
 }
 
 menuentry "Reboot" {
