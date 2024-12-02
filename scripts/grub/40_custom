@@ -1,0 +1,19 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+# path: /etc/grub.d/40_custom
+# run "update-grub" after editing this file
+
+menuentry "Go To Sleep" {
+    echo "Powering off..."
+    shutdown -h now
+}
+
+menuentry "Reboot" {
+    echo "Rebooting..."
+    reboot
+}
+
