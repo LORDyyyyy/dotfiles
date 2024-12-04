@@ -1,0 +1,62 @@
+{
+  "timeStamp": 1732796211888,
+  "version": "1.61.2",
+  "userSettings": {
+    "externalLists": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Dandelion%20Sprout's%20Anti-Malware%20List.txt\nhttps://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.mini.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt\nhttps://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt",
+    "importedLists": [
+      "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Dandelion%20Sprout's%20Anti-Malware%20List.txt",
+      "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
+      "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.mini.txt",
+      "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt",
+      "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
+    ]
+  },
+  "selectedFilterLists": [
+    "user-filters",
+    "ublock-filters",
+    "ublock-badware",
+    "ublock-privacy",
+    "ublock-quick-fixes",
+    "ublock-unbreak",
+    "easylist",
+    "adguard-generic",
+    "adguard-mobile",
+    "easyprivacy",
+    "adguard-spyware",
+    "adguard-spyware-url",
+    "block-lan",
+    "urlhaus-1",
+    "curben-phishing",
+    "plowe-0",
+    "fanboy-cookiemonster",
+    "ublock-cookies-easylist",
+    "adguard-cookies",
+    "ublock-cookies-adguard",
+    "fanboy-social",
+    "adguard-social",
+    "fanboy-thirdparty_social",
+    "easylist-chat",
+    "easylist-newsletters",
+    "easylist-notifications",
+    "easylist-annoyances",
+    "adguard-mobile-app-banners",
+    "adguard-other-annoyances",
+    "adguard-popup-overlays",
+    "adguard-widgets",
+    "ublock-annoyances",
+    "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.mini.txt",
+    "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
+    "https://raw.githubusercontent.com/yokoffing/filterlists/main/annoyance_list.txt",
+    "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Dandelion%20Sprout's%20Anti-Malware%20List.txt"
+  ],
+  "hiddenSettings": {},
+  "whitelist": [
+    "chrome-extension-scheme",
+    "moz-extension-scheme"
+  ],
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
+  "urlFilteringString": "",
+  "hostnameSwitchesString": "no-large-media: behind-the-scene false",
+  "userFilters": "! Title: Hide YouTube Shorts\n! Description: Hide all traces of YouTube shorts videos on YouTube\n! Version: 1.7.0\n! Last modified: 2023-10-23 22:49\n! Expires: 2 weeks (update frequency)\n! Homepage: https://github.com/gijsdev/ublock-hide-yt-shorts\n! License: https://github.com/gijsdev/ublock-hide-yt-shorts/blob/master/LICENSE.md\n\n! Hide all videos containing the phrase \"#shorts\"\nyoutube.com##ytd-grid-video-renderer:has(#video-title:has-text(#shorts))\nyoutube.com##ytd-grid-video-renderer:has(#video-title:has-text(#Shorts))\nyoutube.com##ytd-grid-video-renderer:has(#video-title:has-text(#short))\nyoutube.com##ytd-grid-video-renderer:has(#video-title:has-text(#Short))\n\n! Hide all videos with the shorts indicator on the thumbnail\nyoutube.com##ytd-grid-video-renderer:has([overlay-style=\"SHORTS\"])\nyoutube.com##ytd-rich-item-renderer:has([overlay-style=\"SHORTS\"])\nyoutube.com##ytd-video-renderer:has([overlay-style=\"SHORTS\"])\nyoutube.com##ytd-item-section-renderer.ytd-section-list-renderer[page-subtype=\"subscriptions\"]:has(ytd-video-renderer:has([overlay-style=\"SHORTS\"]))\n\n! Hide shorts button in sidebar\nyoutube.com##ytd-guide-entry-renderer:has-text(Shorts)\nyoutube.com##ytd-mini-guide-entry-renderer:has-text(Shorts)\n\n! Hide shorts section on homepage\nyoutube.com##ytd-rich-section-renderer:has(#rich-shelf-header:has-text(Shorts))\nyoutube.com##ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(Shorts))\n\n! Hide shorts tab on channel pages\n! Old style\nyoutube.com##tp-yt-paper-tab:has(.tp-yt-paper-tab:has-text(Shorts))\n! New style (2023-10)\nyoutube.com##yt-tab-shape:has-text(/^Shorts$/)\n\n! Remove empty spaces in grid\nyoutube.com##ytd-rich-grid-row,#contents.ytd-rich-grid-row:style(display: contents !important)\n\n\n!!! MOBILE !!!\n\n! Hide all videos in home feed containing the phrase \"#shorts\"\nm.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(#shorts))\nm.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(#Shorts))\nm.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(#short))\nm.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(#Short))\n\n! Hide all videos in subscription feed containing the phrase \"#shorts\"\nm.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(#shorts))\nm.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(#Shorts))\nm.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(#short))\nm.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(#Short))\n\n! Hide shorts button in the bottom navigation bar\nm.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)\n\n! Hide all videos with the shorts indicator on the thumbnail\nm.youtube.com##ytm-video-with-context-renderer:has([data-style=\"SHORTS\"])\n\n! Hide shorts sections\nm.youtube.com##ytm-rich-section-renderer:has(ytm-reel-shelf-renderer:has(.reel-shelf-title-wrapper:has-text(Shorts)))\nm.youtube.com##ytm-reel-shelf-renderer.item:has(.reel-shelf-title-wrapper:has-text(Shorts))\n\n! Hide shorts tab on channel pages\nm.youtube.com##.single-column-browse-results-tabs>a:has-text(Shorts)"
+}
