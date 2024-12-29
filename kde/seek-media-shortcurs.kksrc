@@ -1,0 +1,13 @@
+[Custom Commands][net.local.playerctl-2.desktop]
+Exec=playerctl position 5-
+Name=Seek 5 Seconds Backward
+
+[Custom Commands][net.local.playerctl.desktop]
+Exec=playerctl position 5+
+Name=Seek 5 Seconds Forward
+
+[net.local.playerctl-2.desktop][Global Shortcuts]
+_launch=Shift+Media Previous
+
+[net.local.playerctl.desktop][Global Shortcuts]
+_launch=Shift+Media Next
