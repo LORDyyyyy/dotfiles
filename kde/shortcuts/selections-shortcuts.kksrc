@@ -1,0 +1,20 @@
+[Custom Commands][net.local.notify-send.desktop]
+Exec=notify-send "Translation" "`xclip -o | trans -b :ar | rev`"\n
+Name=Translate Selection
+
+[Custom Commands][net.local.xdg-open-2.desktop]
+Exec=xdg-open "https://www.google.com/search?q=$(xclip -o)"
+Name=Search Text
+
+[Custom Commands][net.local.xdg-open.desktop]
+Exec=xdg-open `xclip -o`
+Name=Open Link
+
+[net.local.notify-send.desktop][Global Shortcuts]
+_launch=Meta+Ctrl+Alt+Space; Meta+Ctrl+Alt+T
+
+[net.local.xdg-open-2.desktop][Global Shortcuts]
+_launch=Meta+Ctrl+Alt+S
+
+[net.local.xdg-open.desktop][Global Shortcuts]
+_launch=Meta+Ctrl+Alt+L
