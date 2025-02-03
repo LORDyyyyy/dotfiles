@@ -1,0 +1,6 @@
+[Custom Commands][net.local.konsole.desktop]
+Exec=konsole -e /home/lordy/Programs/Scripts/install-package.sh
+Name=Install Package
+
+[net.local.konsole.desktop][Global Shortcuts]
+_launch=Meta+Ctrl+Alt+K
