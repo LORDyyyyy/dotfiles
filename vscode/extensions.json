@@ -1,0 +1,301 @@
+{
+    "Main": {
+        "extensions": [
+            "patbenatar.advanced-new-file",
+            "formulahendry.code-runner",
+            "streetsidesoftware.code-spell-checker",
+            "adpyke.codesnap",
+            "EditorConfig.EditorConfig",
+            "usernamehw.errorlens",
+            "antfu.file-nesting",
+            "sleistner.vscode-fileutils",
+            "lamartire.git-indicators",
+            "github.copilot",
+            "gitHub.copilot-chat",
+            "codezombiech.gitignore",
+            "eamodio.gitlens",
+            "qezhu.gitlink",
+            "oderwat.indent-rainbow",
+            "shd101wyy.markdown-preview-enhanced",
+            "davidanson.vscode-markdownlint",
+            "PKief.material-icon-theme",
+            "christian-kohler.path-intellisense",
+            "alefragnani.project-manager",
+            "Gruntfuggly.todo-tree",
+            "pflannery.vscode-versionlens",
+            "tomoki1207.pdf",
+            "Cardinal90.multi-cursor-case-preserve",
+            "shardulm94.trailing-spaces",
+            "aaron-bond.better-comments",
+            "nhoizey.gremlins",
+            "lacroixdavid1.vscode-format-context-menu",
+            "jmkrivocapich.drawfolderstructure",
+            "hoovercj.vscode-settings-cycler",
+            "johnpapa.vscode-peacock",
+            "alefragnani.bookmarks",
+            "catppuccin.catppuccin-vsc",
+            "perragnaredin.light-plus-tweaked",
+            "dracula-theme.theme-dracula",
+            "zhuangtongfa.material-theme",
+            "avetis.tokyo-night",
+            "enkia.tokyo-night",
+            "pranjalkumar.minimal-kiwi",
+            "github.github-vscode-theme",
+            "gsgualbano.baby-panda",
+            "hiukky.flate",
+            "hermitter.oh-lucy-vscode",
+            "equinusocio.vsc-material-theme",
+            "mikaelkristiansson87.react-theme-vscode"
+        ],
+        "parents": []
+    },
+    "Frontend - Default": {
+        "extensions": [
+            "formulahendry.auto-rename-tag",
+            "naumovs.color-highlight",
+            "pranaygp.vscode-css-peek",
+            "dbaeumer.vscode-eslint",
+            "ecmel.vscode-html-css",
+            "kisstkondoros.vscode-gutter-preview",
+            "wix.vscode-import-cost",
+            "Zignd.html-css-class-completion",
+            "xabikos.JavaScriptSnippets",
+            "ms-vscode.vscode-typescript-next",
+            "MariusAlchimavicius.json-to-ts",
+            "ritwickdey.LiveServer",
+            "christian-kohler.npm-intellisense",
+            "esbenp.prettier-vscode",
+            "YoavBls.pretty-ts-errors",
+            "rangav.vscode-thunder-client",
+            "ChakrounAnas.turbo-console-log",
+            "bengreenier.vscode-node-readme",
+            "Monish.regexsnippets",
+            "mikestead.dotenv",
+            "chrmarti.regex",
+            "steoates.autoimport",
+            "moalamri.inline-fold",
+            "imgildev.vscode-auto-barrel",
+            "steoates.autoimport"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "Frontend - Angular": {
+        "extensions": [
+            "Mikael.Angular-BeastCode",
+            "Angular.ng-template",
+            "cyrilletuzi.angular-schematics",
+            "johnpapa.Angular2"
+        ],
+        "parents": [
+            "Main",
+            "Frontend - Default"
+        ]
+    },
+    "Frontend - React": {
+        "extensions": [
+            "dsznajder.es7-react-js-snippets",
+            "burkeholland.simple-react-snippets",
+            "planbcoding.vscode-react-refactor"
+        ],
+        "parents": [
+            "Main",
+            "Frontend - Default"
+        ]
+    },
+    "Python": {
+        "extensions": [
+            "njpwerner.autodocstring",
+            "mikestead.dotenv",
+            "ms-python.isort",
+            "ms-toolsai.jupyter",
+            "ms-toolsai.vscode-jupyter-cell-tags",
+            "ms-toolsai.jupyter-keymap",
+            "ms-toolsai.jupyter-renderers",
+            "ms-toolsai.vscode-jupyter-slideshow",
+            "ms-python.vscode-pylance",
+            "ms-python.python",
+            "ms-python.debugpy",
+            "donjayamanne.python-environment-manager",
+            "charliermarsh.ruff",
+            "rangav.vscode-thunder-client",
+            "Monish.regexsnippets",
+            "ericsia.pythonsnippets3",
+            "ms-python.mypy-type-checker"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "C/C++": {
+        "extensions": [
+            "ms-vscode.cpptools",
+            "ms-vscode.cpptools-extension-pack",
+            "ms-vscode.cpptools-themes",
+            "xaver.clang-format",
+            "llvm-vs-code-extensions.vscode-clangd",
+            "twxs.cmake",
+            "ms-vscode.cmake-tools",
+            "DivyanshuAgrawal.competitive-programming-helper",
+            "ms-vscode.makefile-tools",
+            "mads-hartmann.bash-ide-vscode",
+            "timonwong.shellcheck"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "Bash": {
+        "extensions": [
+            "mads-hartmann.bash-ide-vscode",
+            "timonwong.shellcheck",
+            "ms-vscode.makefile-tools",
+            "remisa.shellman",
+            "foxundermoon.shell-format",
+            "rogalmic.bash-debug"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "Java": {
+        "extensions": [
+            "redhat.vscode-xml",
+            "vscjava.vscode-java-test",
+            "vscjava.vscode-java-dependency",
+            "vscjava.vscode-maven",
+            "redhat.java",
+            "vscjava.vscode-gradle",
+            "vscjava.vscode-java-pack",
+            "vscjava.vscode-java-debug",
+            "bernardoamorim7.javafx-css-support-vscode",
+            "Monish.regexsnippets"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "Backend - Default": {
+        "extensions": [
+            "cweijan.vscode-database-client2",
+            "cweijan.dbclient-jdbc",
+            "mikestead.dotenv",
+            "inferrinizzard.prettier-sql-vscode",
+            "humao.rest-client",
+            "rangav.vscode-thunder-client",
+            "Postman.postman-for-vscode",
+            "Monish.regexsnippets",
+            "chrmarti.regex"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "Backend - Node": {
+        "extensions": [
+            "dbaeumer.vscode-eslint",
+            "wix.vscode-import-cost",
+            "xabikos.JavaScriptSnippets",
+            "ms-vscode.vscode-typescript-next",
+            "MariusAlchimavicius.json-to-ts",
+            "roerohan.mongo-snippets-for-node-js",
+            "mongodb.mongodb-vscode",
+            "bengreenier.vscode-node-readme",
+            "chris-noring.node-snippets",
+            "christian-kohler.npm-intellisense",
+            "esbenp.prettier-vscode",
+            "YoavBls.pretty-ts-errors",
+            "Prisma.prisma",
+            "ChakrounAnas.turbo-console-log",
+            "imgildev.vscode-auto-barrel",
+            "steoates.autoimport"
+        ],
+        "parents": [
+            "Main",
+            "Backend - Default"
+        ]
+    },
+    "Backend - NestJS": {
+        "extensions": [
+            "imgildev.vscode-nestjs-generator",
+            "imgildev.vscode-nestjs-snippets-extension",
+            "imgildev.vscode-nestjs-swagger-snippets"
+        ],
+        "parents": [
+            "Main",
+            "Backend - Default",
+            "Backend - Node"
+        ]
+    },
+    "Backend - .NET": {
+        "extensions": [
+            "ms-dotnettools.vscode-dotnet-pack",
+            "ms-dotnettools.vscode-dotnet-runtime",
+            "ms-dotnettools.csharp",
+            "ms-dotnettools.csdevkit",
+            "kreativ-software.csharpextensions",
+            "ms-mssql.data-workspace-vscode",
+            "ms-mssql.sql-database-projects-vscode",
+            "ms-mssql.mssql",
+            "patcx.vscode-nuget-gallery"
+        ],
+        "parents": [
+            "Main",
+            "Backend - Default"
+        ]
+    },
+    "Database - Default": {
+        "extensions": [
+            "cweijan.vscode-database-client2",
+            "cweijan.dbclient-jdbc",
+            "mikestead.dotenv",
+            "inferrinizzard.prettier-sql-vscode"
+        ],
+        "parents": [
+            "Main"
+        ]
+    },
+    "Database - NoSQL": {
+        "extensions": [
+            "mongodb.mongodb-vscode",
+            "roerohan.mongo-snippets-for-node-js"
+        ],
+        "parents": [
+            "Main",
+            "Database - Default"
+        ]
+    },
+    "Database - MSSQL": {
+        "extensions": [
+            "ms-mssql.data-workspace-vscode",
+            "ms-mssql.sql-database-projects-vscode",
+            "ms-mssql.mssq"
+        ],
+        "parents": [
+            "Main",
+            "Database - Default"
+        ]
+    },
+    "Database - MySQL": {
+        "extensions": [],
+        "parents": [
+            "Main",
+            "Database - Default"
+        ]
+    },
+    "Database - PostgreSQL": {
+        "extensions": [],
+        "parents": [
+            "Main",
+            "Database - Default"
+        ]
+    },
+    "Database - OracleDB": {
+        "extensions": [],
+        "parents": [
+            "Main",
+            "Database - Default"
+        ]
+    }
+}
