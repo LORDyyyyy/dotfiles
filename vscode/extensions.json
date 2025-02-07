@@ -33,6 +33,9 @@
             "hoovercj.vscode-settings-cycler",
             "johnpapa.vscode-peacock",
             "alefragnani.bookmarks",
+            "helixquar.randomeverything",
+            "britesnow.vscode-toggle-quotes",
+            "wmaurer.change-case",
             "catppuccin.catppuccin-vsc",
             "perragnaredin.light-plus-tweaked",
             "dracula-theme.theme-dracula",
@@ -41,11 +44,19 @@
             "enkia.tokyo-night",
             "pranjalkumar.minimal-kiwi",
             "github.github-vscode-theme",
-            "gsgualbano.baby-panda",
             "hiukky.flate",
             "hermitter.oh-lucy-vscode",
             "equinusocio.vsc-material-theme",
-            "mikaelkristiansson87.react-theme-vscode"
+            "mikaelkristiansson87.react-theme-vscode",
+            "teabyii.ayu",
+            "robbowen.synthwave-vscode",
+            "mcagampan.dark-horizon",
+            "sveggiani.vscode-field-lights",
+            "eliverlara.andromeda",
+            "ankitcode.firefly",
+            "barrsan.reui",
+            "guilhermerodz.omni-owl",
+            "DaltonMenezes.aura-theme"
         ],
         "parents": []
     },
@@ -75,7 +86,9 @@
             "steoates.autoimport",
             "moalamri.inline-fold",
             "imgildev.vscode-auto-barrel",
-            "steoates.autoimport"
+            "steoates.autoimport",
+            "equinusocio.moxer-icons",
+            "solnurkarim.html-to-css-autocompletion"
         ],
         "parents": [
             "Main"

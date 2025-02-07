@@ -1,5 +1,10 @@
 {
+    // Profile: Default
     "window.zoomLevel": 0,
+
+    "workbench.startupEditor": "none",
+
+    "explorer.autoReveal": false,
 
     "editor.fontSize": 18,
     "editor.fontFamily": "JetBrains Mono, Noto Nerd Emoji, 'DejaVu Sans Mono', monospace",
@@ -21,7 +26,7 @@
     "editor.guides.indentation": false,
     "editor.padding.top": 3,
 
-    "window.title": "   ",
+    "window.title": " ",
     "workbench.editor.wrapTabs": true,
     "workbench.tips.enabled": false,
     "workbench.editor.editorActionsLocation": "default", // The run button in top left
@@ -30,8 +35,10 @@
     "window.experimentalControlOverlay": false,
 
     "window.menuBarVisibility": "toggle", // title frame menu bar
-    "window.customTitleBarVisibility": "never",
+    "window.customTitleBarVisibility": "auto",
     "window.titleBarStyle": "custom",
+
+    "editor.hideCursorInOverviewRuler": false,
 
     "window.commandCenter": false,
     "editor.minimap.enabled": false,
@@ -48,14 +55,12 @@
             "id": "clean-setup",
             "values": [
                 {
-                    "editor.lineNumbers": "off",
                     "workbench.activityBar.location": "hidden",
                     "editor.glyphMargin": false,
                     "breadcrumbs.enabled": false,
                     "workbench.editor.editorActionsLocation": "hidden"
                 },
                 {
-                    "editor.lineNumbers": "relative",
                     "workbench.activityBar.location": "default",
                     "editor.glyphMargin": false,
                     "breadcrumbs.enabled": true,
