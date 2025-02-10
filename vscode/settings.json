@@ -1,75 +1,88 @@
 {
     // Profile: Default
+
     "window.zoomLevel": 0,
 
     "workbench.startupEditor": "none",
 
-    "explorer.autoReveal": false,
-
+    // Font
     "editor.fontSize": 18,
     "editor.fontFamily": "JetBrains Mono, Noto Nerd Emoji, 'DejaVu Sans Mono', monospace",
 
+    // Appearances
     "workbench.colorTheme": "Dark+ Tweaked",
     "workbench.iconTheme": "material-icon-theme",
     "material-icon-theme.activeIconPack": "none",
 
     "editor.lineHeight": 1.5,
     "editor.lineNumbers": "relative",
+    // Controls how the editor highlights the current line.
+    "editor.renderLineHighlight": "line",
 
+    // The left padding in the line number columns. Used for images and other extensions.
+    "editor.glyphMargin": true,
     "editor.stickyScroll.enabled": false,
+    "editor.minimap.enabled": false,
+    // Controls whether the cursor is hidden in the overview ruler.
+    "editor.hideCursorInOverviewRuler": true,
+
+    // Controls whether the editor highlights occurrences of semantic symbols.
+    "editor.occurrencesHighlight": "off",
+
+    "editor.autoClosingBrackets": "languageDefined",
 
     "editor.cursorSmoothCaretAnimation": "on",
-
-    "workbench.layoutControl.enabled": false,
-    "workbench.layoutControl.type": "menu",
 
     "editor.guides.indentation": false,
     "editor.padding.top": 3,
 
-    "window.title": " ",
+    // When you open a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+    "editor.detectIndentation": true,
+
+    // Controls whether the 'Enter' key accepts suggestions in addition to the 'Tab' key.
+    "editor.acceptSuggestionOnEnter": "on",
+
+    // Controls whether snippets are displayed with other suggestions and how they are sorted.
+    "editor.snippetSuggestions": "bottom",
+
+    // Controls how whitespace is displayed in the editor.
+    "editor.renderWhitespace": "none",
+
+    "editor.accessibilitySupport": "off",
+
+    "breadcrumbs.enabled": true,
+
+    "workbench.layoutControl.enabled": false,
+    "workbench.layoutControl.type": "menu",
+
+    "workbench.statusBar.visible": true,
+
     "workbench.editor.wrapTabs": true,
+    // When enabled, the watermark hint will be displayed when no editors are open.
     "workbench.tips.enabled": false,
-    "workbench.editor.editorActionsLocation": "default", // The run button in top left
+    // The run button (and other buttons) in the top left.
+    "workbench.editor.editorActionsLocation": "default",
     "workbench.activityBar.location": "default",
 
+    "window.title": " ",
+    "window.commandCenter": false,
+    // For the Default Profile Only.
     "window.experimentalControlOverlay": false,
-
     "window.menuBarVisibility": "toggle", // title frame menu bar
     "window.customTitleBarVisibility": "auto",
     "window.titleBarStyle": "custom",
 
-    "editor.hideCursorInOverviewRuler": false,
+    // Git
+    "scm.diffDecorations": "gutter",
 
-    "window.commandCenter": false,
-    "editor.minimap.enabled": false,
-    "breadcrumbs.enabled": true,
-    "editor.glyphMargin": false, // The left padding in the line number columns. Used for images and other extensions.
-
-    "explorer.compactFolders": false, // Do not group parent folder with the only single child folder.
     "workbench.tree.indent": 10,
     "workbench.tree.renderIndentGuides": "none",
+    // Controls whether the Explorer automatically shows and selects the file contents when opening a file.
+    "explorer.autoReveal": false,
+    // Controls whether grouping parent folder with the only single child folder.
+    "explorer.compactFolders": false,
     "explorer.decorations.colors": false, // Example: when a file contains an error, change the file color to red or not.
-
-    "settings.cycle": [
-        {
-            "id": "clean-setup",
-            "values": [
-                {
-                    "workbench.activityBar.location": "hidden",
-                    "editor.glyphMargin": false,
-                    "breadcrumbs.enabled": false,
-                    "workbench.editor.editorActionsLocation": "hidden"
-                },
-                {
-                    "workbench.activityBar.location": "default",
-                    "editor.glyphMargin": false,
-                    "breadcrumbs.enabled": true,
-                    "workbench.editor.editorActionsLocation": "default"
-                }
-            ]
-        }
-    ],
-
+    "explorer.confirmDelete": false,
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
     "explorer.fileNesting.patterns": {
@@ -163,6 +176,31 @@
         "*.xaml": "$(capture).xaml.cs"
     },
 
+    // Settings Cycler Extension
+    "settings.cycle": [
+        {
+            "id": "clean-setup",
+            "values": [
+                {
+                    "workbench.activityBar.location": "hidden",
+                    "editor.glyphMargin": false,
+                    "breadcrumbs.enabled": false,
+                    "workbench.editor.editorActionsLocation": "hidden",
+                    "workbench.statusBar.visible": false,
+                    "scm.diffDecorations": "none"
+                },
+                {
+                    "workbench.activityBar.location": "default",
+                    "editor.glyphMargin": true,
+                    "breadcrumbs.enabled": true,
+                    "workbench.editor.editorActionsLocation": "default",
+                    "workbench.statusBar.visible": true,
+                    "scm.diffDecorations": "gutter"
+                }
+            ]
+        }
+    ],
+
     // Include "-" and "$" in word selection.
     "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
 
@@ -178,11 +216,15 @@
     "editor.formatOnSave": true,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 2000,
+    "files.autoSaveWhenNoErrors": true,
     "files.exclude": {
         "package-lock.json": true,
         "yarn.lock": true
     },
-    "files.defaultLanguage": "markdown",
+    "files.defaultLanguage": "",
+    // Configure file associations for languages ​​(e.g. " *.extension ": "html" ). These associations take precedence over the default associations for installed languages.
+    "files.associations": {},
+    // Controls whether to use .gitignore files by default or .ignore files when searching in a new workspace.
     "search.useIgnoreFiles": false,
     "search.exclude": {
         "**/.git": true,
@@ -216,20 +258,21 @@
         "*": false,
         "plaintext": false,
         "scminput": false,
-        "markdown": true
+        "markdown": false
     },
     "cSpell.userWords": ["lordy"],
     "cSpell.ignorePaths": [
-        "package-lock.json",
-        "node_modules",
+        "node_modules/",
         "vscode-extension",
-        ".git/",
         ".vscode",
         ".vscode-insiders",
         "package.json",
+        "package-lock.json",
+        "yarn.lock",
+        ".git/",
         ".gitignore"
     ],
-    // "redhat.telemetry.enabled": false,
+    "redhat.telemetry.enabled": false,
     // "remote.SSH.remotePlatform": {
     //     "*.gitpod.io": "linux"
     // },

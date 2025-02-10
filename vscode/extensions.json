@@ -56,7 +56,17 @@
             "ankitcode.firefly",
             "barrsan.reui",
             "guilhermerodz.omni-owl",
-            "DaltonMenezes.aura-theme"
+            "DaltonMenezes.aura-theme",
+            "tallpizza.toggle-brackets",
+            "mkxml.vscode-filesize",
+            "adam-bender.commit-message-editor",
+            "chunsen.bracket-select",
+            "yatki.vscode-surround",
+            "chrisdias.vscode-opennewinstance",
+            "bmalehorn.print-it",
+            "albymor.increment-selection",
+            "wolray.any-swap",
+            "thomascsd.vscode-readme-pattern"
         ],
         "parents": []
     },
@@ -88,7 +98,12 @@
             "imgildev.vscode-auto-barrel",
             "steoates.autoimport",
             "equinusocio.moxer-icons",
-            "solnurkarim.html-to-css-autocompletion"
+            "solnurkarim.html-to-css-autocompletion",
+            "postman.postman-for-vscode",
+            "bradlc.vscode-tailwindcss",
+            "alfredbirk.tailwind-documentation",
+            "KalimahApps.tailwind-config-viewer",
+            "ctcuff.font-preview"
         ],
         "parents": [
             "Main"
@@ -110,7 +125,9 @@
         "extensions": [
             "dsznajder.es7-react-js-snippets",
             "burkeholland.simple-react-snippets",
-            "planbcoding.vscode-react-refactor"
+            "planbcoding.vscode-react-refactor",
+            "styled-components.vscode-styled-components",
+            "jonkwheeler.styled-components-snippets"
         ],
         "parents": [
             "Main",
@@ -251,7 +268,8 @@
             "ms-mssql.data-workspace-vscode",
             "ms-mssql.sql-database-projects-vscode",
             "ms-mssql.mssql",
-            "patcx.vscode-nuget-gallery"
+            "patcx.vscode-nuget-gallery",
+            "vscode-solution-explorer"
         ],
         "parents": [
             "Main",
