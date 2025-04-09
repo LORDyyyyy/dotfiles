@@ -7,6 +7,13 @@ elif [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
+# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
+shopt -s checkwinsize
+
+################################################
+# Aliases and Exports Section
+################################################
+
 export PATH="$PATH:/home/lordy/.local/bin:/home/lordy/Programs/Scripts:/home/lordy/.dotnet/tools"
 
 export BROWSER="/usr/bin/google-chrome-stable"
@@ -23,13 +30,14 @@ alias where="which"
 alias CLEAR="clear"
 alias copy='xsel --clipboard' # copy output using pipe |
 alias json_format='python -m json.tool'
-alias copyl='fc -ln -1 | xargs | xclip -selection clipboard' # copy last command
+alias copyl='fc -ln -1 | xargs | tr -d "\n" | xclip -selection clipboard' # copy last command
+alias http='python -m http.server'
 
 # git checkout branches with fzf
 alias gbranch='git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout'
 
-# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-shopt -s checkwinsize
+# Restart KDE Plasma
+alias restart-kde='kquitapp5 plasmashell && kstart5 plasmashell > /dev/null 2>&1'
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -39,6 +47,7 @@ alias mv='mv -i'
 export EDITOR=nvim
 export VISUAL=nvim
 alias vim='nvim'
+alias nano='nvim'
 
 # Change directory aliases
 alias gd="cd ~/G-Drive"
@@ -61,7 +70,7 @@ alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
 # Edit this .bashrc file
-alias ebrc='sudo nvim ~/.bashrc'
+alias ebrc='nvim ~/.bashrc'
 # Source this .bashrc file
 alias srcbrc='source ~/.bashrc'
 
@@ -75,7 +84,7 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
-# Search running port
+# grep running port
 alias lport='sudo lsof -i -P -n | grep '
 
 # Show open ports
@@ -129,14 +138,29 @@ if [[ $- == *i* ]]; then
     source ~/Programs/fzf-git.sh
 fi
 
-# Bash History configuration
+# CTRL-G CTRL-F for Files
+# CTRL-G CTRL-B for Branches
+# CTRL-G CTRL-T for Tags
+# CTRL-G CTRL-R for Remotes
+# CTRL-G CTRL-H for commit Hashes
+# CTRL-G CTRL-S for Stashes
+# CTRL-G CTRL-L for reflogs
+# CTRL-G CTRL-W for Worktrees
+# CTRL-G CTRL-E for Each ref (git for-each-ref)
+
+################################################
+# Bash History Configuration Section
+################################################
+
 export HISTCONTROL=erasedups:ignoredups:ignorespace
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 unset HISTTIMEFORMAT
 shopt -s histappend
 
-# Functions section
+################################################
+# Functions Section
+################################################
 
 # Go to a specified language test folder
 lang () {
@@ -215,24 +239,46 @@ if [[ -n $DISPLAY ]]; then
   copy_line_to_x_clipboard () {
     printf %s "$READLINE_LINE" | xclip -selection CLIPBOARD
   }
-  bind -x '"\C-y": copy_line_to_x_clipboard' # binded to ctrl-y
+
+  bind -x '"\C-y": copy_line_to_x_clipboard' # Binded to Ctrl-y
 fi
 
 # IP address lookup
 alias whatismyip="whatsmyip"
 function whatsmyip () {
-    # Internal IP Lookup.
-    if command -v ip &> /dev/null; then
-        echo -n "Internal IP: "
-        # ip addr show wlan0 | grep "inet " | awk '{print $2}' | cut -d/ -f1
-        echo $LOCAL_IP
-    else
-        echo -n "Internal IP: "
-        ifconfig wlan0 | grep "inet " | awk '{print $2}'
-    fi
+    local show_location=false
+
+    # Check for location flag
+    for arg in "$@"; do
+        if [[ "$arg" == "-l" || "$arg" == "--location" ]]; then
+            show_location=true
+            break
+        fi
+    done
+
+    echo "Internal IP: $LOCAL_IP"
+    # ip addr show wlan0 | grep "inet " | awk '{print $2}' | cut -d/ -f1
 
     # External IP Lookup
-    echo -n "External IP: "
-    curl -s ifconfig.me
-    echo ""
+    echo "External IP: $(curl -s ifconfig.me)"
+
+    # Show location if flag is present
+    if [[ "$show_location" == true ]]; then
+        printf "Location: %s, %s\n" `curl -s "ipinfo.io/$external_ip/city"` `curl -s "ipinfo.io/$external_ip/country"`
+    fi
 }
+
+# fzf specific functions
+fzfpac() {
+    pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+}
+fzfpacrm() {
+    pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns
+}
+fzfpacls() {
+  pacman -Qq | fzf --multi --preview 'pacman -Qi {1}'
+}
+fzfyay() {
+    yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
+}
+
